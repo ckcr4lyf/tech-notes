@@ -1,3 +1,3 @@
 # Summary
 
-- [Chapter 1](./chapter_1.md)
+- [Running bitcoin-core on a VPS](./bitcoin_core.md)
