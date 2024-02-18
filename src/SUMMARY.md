@@ -5,6 +5,7 @@
 # Running some services
 
 - [Running bitcoin-core on a VPS](./bitcoin_core.md)
+- [Running monero on a VPS](./monero_ubuntu.md)
 
 # Installing stuff (OS specific)
 
