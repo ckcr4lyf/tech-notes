@@ -10,3 +10,7 @@
 # Installing stuff (OS specific)
 
 - [Installing tor on ubuntu](./tor_ubuntu.md)
+
+# Encoding
+
+- [AV1 encoding for BluRays](./av1_encoding.md)
