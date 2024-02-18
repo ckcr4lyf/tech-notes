@@ -34,3 +34,13 @@ Which will print a lot of messages, looking like:
 
 Here, `crop=1920:800:0:140` is what you want.
 
+## Encoding the video
+
+Since I've built `ffav1` as ffmpeg with (and only with) SVT-AV1, I will encode the video independently from audio / subs etc.
+
+Add in the correct cropdetect, or leave it out if there's no cropping.
+
+```
+ffav1 -hide_banner -y -i Filename.mkv -vf crop=1920:800:0:140 -map 0:v:0 -c:v:0 libsvtav1 -preset 6 -svtav1-params tune=0:enable-overlays=1:scm=0 -pix_fmt yuv420p10le -g 120 -b:v:0 5000k -pass 1 -an -f null /dev/null && \
+ffav1 -hide_banner -y -i Filename.mkv -vf crop=1920:800:0:140 -map 0:v:0 -c:v:0 libsvtav1 -preset 6 -svtav1-params tune=0:enable-overlays=1:scm=0 -pix_fmt yuv420p10le -g 120 -b:v:0 5000k -pass 2 -an Filename_AV1.mkv
+```
