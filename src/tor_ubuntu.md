@@ -39,6 +39,13 @@ apt update
 apt install tor deb.torproject.org-keyring
 ```
 
+5. Verification
+
+```
+curl --proxy socks5h://localhost:9050 icanhazip.com
+```
+
+You can then put the IP into [AbuseDB](https://www.abuseipdb.com/check/) or check on the [Tor Relay Metrics](https://metrics.torproject.org/rs.html) page.
 
 ## References
 
