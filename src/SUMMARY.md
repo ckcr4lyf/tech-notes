@@ -6,6 +6,7 @@
 
 - [Running bitcoin-core on a VPS](./bitcoin_core.md)
 - [Running monero on a VPS](./monero_ubuntu.md)
+- [Exposting a local webservice over the internet via Cloudflare Tunnel](./cftunnel.md)
 
 # Installing stuff (OS specific)
 
