@@ -47,6 +47,12 @@ curl --proxy socks5h://localhost:9050 icanhazip.com
 
 You can then put the IP into [AbuseDB](https://www.abuseipdb.com/check/) or check on the [Tor Relay Metrics](https://metrics.torproject.org/rs.html) page.
 
+You can also view the tor logs via:
+
+```
+journalctl -f -u tor
+```
+
 ## References
 
 Mostly everything is from [the official tor docs](https://support.torproject.org/apt/tor-deb-repo/).
