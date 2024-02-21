@@ -4,10 +4,10 @@
 
 # Running some services
 
-- [Running bitcoin-core on a VPS](./bitcoin_core.md)
-- [Running monero on a VPS](./monero_ubuntu.md)
-    - [Connecting a monero wallet to a node over tor](./monero_wallet_tor.md)
-- [Exposting a local webservice over the internet via Cloudflare Tunnel](./cftunnel.md)
+- [Running bitcoin-core on a VPS](./services/bitcoin_core.md)
+- [Running monero on a VPS](./services/monero/monero_ubuntu.md)
+    - [Connecting a monero wallet to a node over tor](./services/monero/monero_wallet_tor.md)
+- [Exposting a local webservice over the internet via Cloudflare Tunnel](./services/cftunnel.md)
 
 # Installing stuff (OS specific)
 
