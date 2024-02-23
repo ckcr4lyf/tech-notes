@@ -8,6 +8,8 @@
 - [Running monero on a VPS](./services/monero/monero_ubuntu.md)
     - [Connecting a monero wallet to a node over tor](./services/monero/monero_wallet_tor.md)
 - [Exposting a local webservice over the internet via Cloudflare Tunnel](./services/cftunnel.md)
+- [ntopng](./services/ntopng/ntopng.md)
+    - [Installation](./services/ntopng/installation.md)
 
 # Installing stuff (OS specific)
 
