@@ -137,3 +137,11 @@ If the only audio was some form of raw audio (e.g. Dolby TrueHD / DTS-HD), we ca
 ```
 ffmpeg -hide_banner Filename.mkv -map 0:a:0 -c:a:0 ac3 -b:a:0 640k Filename_audio.ac3
 ```
+
+## Extracting the chapters
+
+If the original source had chapters, you can extract them to merge them into the final encode, via:
+
+```
+$ mkvextract Filename.mkv chapters Filename_Chapters.xml
+```
