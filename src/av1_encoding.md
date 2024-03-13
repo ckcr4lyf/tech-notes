@@ -145,3 +145,15 @@ If the original source had chapters, you can extract them to merge them into the
 ```
 $ mkvextract Filename.mkv chapters Filename_Chapters.xml
 ```
+
+## Merging the files together
+
+Once you have the video, audio, subtitles, you can merge them together using something like:
+
+```
+mkvmerge --title "Movie Name (Year)" \
+--track-name "0:" Filename_AV1.mkv \
+--track-name "0:English (DD5.1)" --language 0:eng Filename_audio.ac3 \
+--track-name "0:English (SDH)" --language 0:eng Subtitles.srt \
+-o Movie.Year.1080p.BluRay.DD5.1.AV1-GROUP.mkv
+```
