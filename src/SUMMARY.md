@@ -10,6 +10,8 @@
 - [Exposting a local webservice over the internet via Cloudflare Tunnel](./services/cftunnel.md)
 - [ntopng](./services/ntopng/ntopng.md)
     - [Installation](./services/ntopng/installation.md)
+- [nginx](./services/nginx/nginx.md)
+    - [Running HTTP/3 enabled nginx](./services/nginx/nginx-h3.md)
 
 # Installing stuff (OS specific)
 
