@@ -21,9 +21,6 @@ cd libressl-3.9.0
 ./configure
 make check
 make install
-
-//cd ..
-//mv libressl-3.9.0 libressl
 ```
 
 ### Building nginx
