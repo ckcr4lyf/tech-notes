@@ -47,3 +47,9 @@ cd nginx
 mkdir logs
 mkdir conf
 ```
+
+## References
+
+* https://nginx.org/en/docs/quic.html
+* https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/
+* https://github.com/libressl/portable?tab=readme-ov-file#steps-that-apply-to-all-builds
