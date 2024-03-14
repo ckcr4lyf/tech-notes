@@ -13,6 +13,7 @@
 - [nginx](./services/nginx/nginx.md)
     - [Running HTTP/3 enabled nginx](./services/nginx/nginx-h3.md)
         - [Setting up TLS and Config](./services/nginx/nginx-h3-config.md)
+    - [Running ECH enabled nginx](./services/nginx/nginx-ech.md)
 
 # Installing stuff (OS specific)
 
