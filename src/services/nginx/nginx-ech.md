@@ -42,3 +42,9 @@ Make sure to put the `custom_ech.conf` inside the `nginx` folder in `esnistuff`.
 cd ~/code/openssl-for-nginx/esnistuff
 ../../nginx/objs/nginx -c custom_ech.conf
 ```
+
+## Reference
+
+* https://github.com/sftcd/openssl/blob/9e66beb759d274f3069e19cc96c793712e83122c/esnistuff/nginx.md?plain=1#L172
+* https://github.com/sftcd/openssl/issues/26
+* https://guardianproject.info/2023/11/10/quick-set-up-guide-for-encrypted-client-hello-ech/
