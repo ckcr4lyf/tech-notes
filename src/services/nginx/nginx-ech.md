@@ -4,7 +4,7 @@ ECH is a good way to hide the SNI of the website being connected to.
 
 However, since ECH is not yet an official RFC (March 2024) and not many libs support it (especially on the server side), we need to do some hacky stuff to deploy it.
 
-Specifically, we will use [openssl](https://github.com/sftcd/openssl/tree/ECH-draft-13c) & [nginx](https://github.com/sftcd/nginx/tree/ECH-experimental) forks by the greate people at [defo.ie](https://defo.ie/) to deploy ECH support.
+Specifically, we will use [openssl](https://github.com/sftcd/openssl/tree/ECH-draft-13c) & [nginx](https://github.com/sftcd/nginx/tree/ECH-experimental) forks by the great people at [defo.ie](https://defo.ie/) to deploy ECH support.
 
 ## Building
 
@@ -51,6 +51,12 @@ mkdir www
 mkdir echkeydir
 ```
 
+## Deploying
+
+To deploy a website with ECH support behind nginx, we need to generate ECH keys, update our DNS, and then configure nginx to use ECH.
+
+The steps are outlined below:
+
 ### Generate the ECH keys
 
 Put whatever `public_name` here you want snoopers to think you're connecting to (via SNI)!
@@ -60,13 +66,64 @@ cd ~/code/openssl-for-nginx/esnistuff
 ../apps/openssl ech -public_name example.com -pemout ./nginx/echkeydir/example.pem.ech
 ```
 
+### Setup DNS records for ECHConfig
+
+Once you generate the ECH keys, the contents will look something like this:
+
+```
+-----BEGIN PRIVATE KEY-----
+[REDACTED]
+-----END PRIVATE KEY-----
+-----BEGIN ECHCONFIG-----
+AD7+DQA6hAAgACAmYD8cK8laATn/iKI1jt79RGkFzoppTl0LVpshC/Q1VQAEAAEAAQALZXhhbXBsZS5jb20AAA==
+-----END ECHCONFIG-----
+```
+
+The base64 text is what you need to add to your domains "HTTPS" DNS record.
+
+For example, if your domain name (whatever value you used for `public_name` in the keygen step doesn't matter) is `rfc5746.mywaifu.best` , then you need to add a HTTPS record in your DNS, as such:
+
+![Cloudflare DNS example for ECH HTTPS](../../assets/ech_dns_https.png)
+
+Note: the value should be: `ech="THE BASE 64 ECHCONFIG"`
+
+### Configure nginx
+
+A sample configuration file could look like this: (`nginx-ech.conf`):
+
+```
+worker_processes  1;
+error_log  logs/error.log  info;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    access_log          logs/access.log combined;
+    ssl_echkeydir        echkeydir;
+    server {
+        listen              443 default_server ssl;
+        ssl_certificate     cadir/domain.crt;
+        ssl_certificate_key cadir/domain.key;
+        ssl_protocols       TLSv1.3;
+        server_name         rfc5746.mywaifu.best;
+        location / {
+            root   www;
+            index  index.html index.htm;
+        }
+    }
+}
+```
+
+Replace `server_name` with whatever your real server (domain) name is, e.g. for me it is `rfc5746.mywaifu.best`). Now put this config in `~/code/openssl-for-nginx/esnistuff/nginx/nginx-ech.conf` .
+
 ### Run nginx
 
-Make sure to put the `custom_ech.conf` inside the `nginx` folder in `esnistuff`.
 
 ```
 cd ~/code/openssl-for-nginx/esnistuff
-../../nginx/objs/nginx -c custom_ech.conf
+../../nginx/objs/nginx -c nginx-ech.conf
 ```
 
 ## Reference
