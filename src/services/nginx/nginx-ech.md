@@ -10,11 +10,37 @@ Specifically, we will use [openssl](https://github.com/sftcd/openssl/tree/ECH-dr
 
 ### Building the OpenSSL fork
 
-This fork adds support for ECH
+This fork adds support for ECH into openssl.
+
+```
+cd ~
+mkdir -p code
+cd code
+git clone https://github.com/sftcd/openssl.git openssl-for-nginx
+cd openssl-for-nginx
+git checkout ECH-draft-13c
+./config -d
+make
+```
 
 ### Building the nginx fork
 
+This fork uses the forked OpenSSL along with Nginx to support incoming ECH TLS handshakes.
+
+```
+cd ~/code
+git clone https://github.com/sftcd/nginx.git
+cd nginx
+git checkout ECH-experimental
+./auto/configure --with-debug --prefix=nginx --with-http_ssl_module --with-openssl=$HOME/code/openssl-for-nginx  --with-openssl-opt="--debug"
+make
+```
+
+Now nginx should be compiled with the ECH compatible OpenSSL!
+
 ### Some nginx dirs
+
+We need to create some directories which nginx expects for logs and stuff.
 
 ```
 cd ~/code/openssl-for-nginx/esnistuff
