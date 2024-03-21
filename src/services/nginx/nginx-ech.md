@@ -126,6 +126,38 @@ cd ~/code/openssl-for-nginx/esnistuff
 ../../nginx/objs/nginx -c nginx-ech.conf
 ```
 
+## Bonus: Multiple ECHConfigs with different SNIs
+
+If you configure nginx to listen on multiple ports, you can advertise separate ECHConfigs for each port, with their own SNI. Specifically, the ECHConfig advertised in the HTTPS RR follows "Port Prefix Naming" as per [Section 2.3 of RFC9460](https://datatracker.ietf.org/doc/html/rfc9460#section-2.3-7).
+
+### Generating a new ECHConfig
+
+Let's say, now instead of `example.com`, we want to use the SNI `cia.gov`. Let's first generate an ECHConfig for this domain:
+
+```
+cd ~/code/openssl-for-nginx/esnistuff
+../apps/openssl ech -public_name cia.gov -pemout ./nginx/echkeydir/cia.gov.pem.ech
+```
+
+### Tell NGINX to listen on this port
+
+If we want port 4443 to advertise this ECHConfig and be connectable, we just add a listen directive for this port in our NGINX config:
+
+```
+    listen 4443 default_server ssl;  
+```
+
+### Advertise the ECHConfig
+
+Finally, we need a new DNS HTTPS record for specifically for this port, based on "Port Prefix Naming". So add a new HTTPS record for your domain, with the target as:
+
+```
+_4443._https.rfc5746.mywaifu.best  
+```
+
+Note: The new part is `_4443._https.`! This will tell browsers (or well, more generally ECH capable clients) the ECHConfig to use on this port.
+
+
 ## Reference
 
 * https://github.com/sftcd/openssl/blob/9e66beb759d274f3069e19cc96c793712e83122c/esnistuff/nginx.md?plain=1#L172
