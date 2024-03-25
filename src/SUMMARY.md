@@ -19,6 +19,11 @@
 
 - [Installing tor on ubuntu](./tor_ubuntu.md)
 
+# Crypto
+
+- [Crypto Stuff](./crypto/crypto.md)
+    - [PGP](./crypto/pgp.md)
+
 # Audio/Video/Encoding
 
 - [AV1 encoding for BluRays](./av1_encoding.md)
