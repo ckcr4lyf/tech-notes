@@ -7,7 +7,7 @@ PGP is great for signing and encryption. Signing is an especially valuable conce
 We will use keys based on [Curve25519](https://en.wikipedia.org/wiki/Curve25519). For signing, this means [Ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519), and for encryption [X25519](https://x25519.xargs.org/).
 
 
-We will first generate a master ceritification key:
+We will first generate a master ceritification key. The password for this guy should be very strong. For the subsequent subkeys we will change the password later.
 
 ```
 gpg --quick-generate-key 'Your Name <email@domain.com>' ed25519 cert never
@@ -73,6 +73,29 @@ ssb   cv25519 2024-03-25 [E] [expires: 2027-03-25]
 ```
 
 Make sure to save `gpg_master_key.asc` somewhere encrypted for when you need it!
+
+## Updating the password
+
+Now with the master key deleted from your keyring, we can edit the password for the subkeys.
+
+Run `gpg -K --keyid-format 0xLONG` , and copy the KEYID of your master key. It would look something like:
+
+```
+sec#  ed25519/0xFFC081E4E8D5FA41 2024-03-25 [C]
+```
+
+Tell GPG you want to edit the key
+
+```
+gpg --edit-key 0xFFC081E4E8D5FA41
+```
+
+At the `gpg> ` prompt, type `passwd` . This will prompt you for the current password, which would be the strong password set when generating the master key.
+
+After entering that, it will ask you for a new password. Put in whatever you want.
+
+Finally, at the `gpg> ` prompt, type `quit` to finish.
+
 
 ## References
 
