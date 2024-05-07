@@ -24,6 +24,7 @@
 - [Crypto Stuff](./crypto/crypto.md)
     - [PGP](./crypto/pgp.md)
     - [OpenSSL](./crypto/openssl/index.md)
+        - [Generating TLS certificates](./crypto/openssl/tls.md)
 
 # Audio/Video/Encoding
 
