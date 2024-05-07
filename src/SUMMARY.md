@@ -23,6 +23,7 @@
 
 - [Crypto Stuff](./crypto/crypto.md)
     - [PGP](./crypto/pgp.md)
+    - [OpenSSL](./crypto/openssl/index.md)
 
 # Audio/Video/Encoding
 
