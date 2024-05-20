@@ -30,3 +30,5 @@
 
 - [AV1 encoding for BluRays](./av1_encoding.md)
 - [Encoding ogg files for iPod](./ogg_aac_ipod.md)
+- [Miscellaneous ffmpeg goodies](./ffmpeg/index.md)
+    - [Encoding Instant Replay to share online](./ffmpeg/screen.md)
