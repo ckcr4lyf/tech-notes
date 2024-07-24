@@ -19,6 +19,9 @@
 # Installing stuff (OS specific)
 
 - [Installing tor on ubuntu](./tor_ubuntu.md)
+- [Installing some programming languages](./install/programming.md)
+    - [Installing Node.JS](./install/node.md)
+    - [Installing Rust](./install/rust.md)
 
 # Crypto
 
