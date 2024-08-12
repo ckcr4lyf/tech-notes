@@ -30,6 +30,11 @@
     - [OpenSSL](./crypto/openssl/index.md)
         - [Generating TLS certificates](./crypto/openssl/tls.md)
 
+# Miscellaneous Tips
+
+- [Wireshark](./wireshark/index.md)
+    - [Remote Wireshark](./wireshark/remote.md)
+
 # Audio/Video/Encoding
 
 - [AV1 encoding for BluRays](./av1_encoding.md)
