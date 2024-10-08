@@ -15,6 +15,8 @@
         - [Setting up TLS and Config](./services/nginx/nginx-h3-config.md)
     - [Running ECH enabled nginx](./services/nginx/nginx-ech.md)
     - [CA Signed TLS certificates](./services/nginx/signed.cert.md)
+- [Wireguard](./services/wireguard/index.md)
+    - [Client](./services/wireguard/client.md)
 
 # Installing stuff (OS specific)
 
