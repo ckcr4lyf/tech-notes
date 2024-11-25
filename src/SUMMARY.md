@@ -17,6 +17,8 @@
     - [CA Signed TLS certificates](./services/nginx/signed.cert.md)
 - [Wireguard](./services/wireguard/index.md)
     - [Client](./services/wireguard/client.md)
+- [Email](./services/email/index.md)
+    - [Maintenance](./services/email/maintenance.md)
 
 # Installing stuff (OS specific)
 
