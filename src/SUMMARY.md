@@ -19,6 +19,8 @@
     - [Client](./services/wireguard/client.md)
 - [Email](./services/email/index.md)
     - [Maintenance](./services/email/maintenance.md)
+- [HTTP(S) Proxy](./services/proxy/index.md)
+    - [Maintenance](./services/proxy/maintenance.md)
 
 # Installing stuff (OS specific)
 
