@@ -22,3 +22,12 @@ You can use `openssl` to verify the new certs are being offered, e.g. for my dom
 openssl s_client -starttls smtp -connect mail.saxrag.com:587
 openssl s_client -connect mail.saxrag.com:993
 ```
+
+## TLS configs
+
+YOu can find the location of the TLS certs/keys used by postfix/dovecot typically at:
+
+```
+/etc/postfix/main.cf
+/etc/dovecot/conf.d/10-ssl.conf
+```
