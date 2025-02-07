@@ -16,6 +16,8 @@
     - [Running ECH enabled nginx](./services/nginx/nginx-ech.md)
     - [CA Signed TLS certificates](./services/nginx/signed.cert.md)
 - [Wireguard](./services/wireguard/index.md)
+    - [Server](./services/wireguard/server.md)
+        - [Obfuscation](./services/wireguard/obfuscation.md)
     - [Client](./services/wireguard/client.md)
 - [Email](./services/email/index.md)
     - [Maintenance](./services/email/maintenance.md)
