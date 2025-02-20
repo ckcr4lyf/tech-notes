@@ -42,6 +42,7 @@
 
 - [Wireshark](./wireshark/index.md)
     - [Remote Wireshark](./wireshark/remote.md)
+    - [TLS Inspection](./wireshark/tls.md)
 
 # Audio/Video/Encoding
 
