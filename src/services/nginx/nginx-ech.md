@@ -2,11 +2,24 @@
 
 ECH is a good way to hide the SNI of the website being connected to.
 
-However, since ECH is not yet an official RFC (March 2024) and not many libs support it (especially on the server side), we need to do some hacky stuff to deploy it.
+However, since ECH is not yet an official RFC (Feb 2025) and not many libs support it (especially on the server side), we need to do some hacky stuff to deploy it.
 
 Specifically, we will use [openssl](https://github.com/sftcd/openssl/tree/ECH-draft-13c) & [nginx](https://github.com/sftcd/nginx/tree/ECH-experimental) forks by the great people at [defo.ie](https://defo.ie/) to deploy ECH support.
 
 ## Building
+
+### Environment
+
+Assuming a clean VPS. We're gonna do all our work in a `ech` directory in the home folder
+
+```
+sudo apt-get install libpcre3 libpcre3-dev
+```
+
+```
+cd ~
+mkdir -p ech
+```
 
 ### Building the OpenSSL fork
 
@@ -16,11 +29,10 @@ This fork adds support for ECH into openssl.
 cd ~
 mkdir -p code
 cd code
-git clone https://github.com/sftcd/openssl.git openssl-for-nginx
-cd openssl-for-nginx
-git checkout ECH-draft-13c
+git clone -b ECH-draft-13c --single-branch https://github.com/sftcd/openssl.git
+cd openssl
 ./config -d
-make
+make -j$(nproc)
 ```
 
 ### Building the nginx fork
@@ -29,14 +41,29 @@ This fork uses the forked OpenSSL along with Nginx to support incoming ECH TLS h
 
 ```
 cd ~/code
-git clone https://github.com/sftcd/nginx.git
+git clone -b ECH-experimental --single-branch https://github.com/sftcd/nginx.git
 cd nginx
-git checkout ECH-experimental
-./auto/configure --with-debug --prefix=nginx --with-http_ssl_module --with-openssl=$HOME/code/openssl-for-nginx  --with-openssl-opt="--debug"
-make
+./auto/configure --with-debug --prefix=nginx --with-http_ssl_module --with-openssl=$HOME/ech/openssl  --with-openssl-opt="--debug"
+make -j$(nproc)
 ```
 
 Now nginx should be compiled with the ECH compatible OpenSSL!
+
+The binary should be at `~/ech/nginx/objs/nginx`
+
+### Config directory
+
+We'll now make a config directory for our ECH keys, TLS key & nginx configuration itself
+
+```
+cd ~/ech
+mkdir -p conf
+cd conf
+mkdir -p echkeydir
+mkdir -p tlskeydir
+mkdir -p nginx/www
+mkdir -p nginx/logs
+```
 
 ### Some nginx dirs
 
