@@ -55,7 +55,7 @@ The binary should be at `~/ech/nginx/objs/nginx`
 
 ### Config directory
 
-We'll now make a config directory for our ECH keys, TLS key & nginx configuration & data:
+We'll now make a config directory for our ECH keys, TLS key & nginx configuration & data.
 
 ```
 cd ~/ech
@@ -134,9 +134,9 @@ http {
     access_log          logs/access.log combined;
     ssl_echkeydir        echkeydir;
     server {
-        listen              443 default_server ssl;
-        ssl_certificate     cadir/domain.crt;
-        ssl_certificate_key cadir/domain.key;
+        listen              4443 default_server ssl;
+        ssl_certificate     tlskeydir/domain.crt;
+        ssl_certificate_key tlskeydir/domain.key;
         ssl_protocols       TLSv1.3;
         server_name         rfc5746.mywaifu.best;
         location / {
@@ -147,14 +147,19 @@ http {
 }
 ```
 
-Replace `server_name` with whatever your real server (domain) name is, e.g. for me it is `rfc5746.mywaifu.best`). Now put this config in `~/code/openssl-for-nginx/esnistuff/nginx/nginx-ech.conf` .
+Replace `server_name` with whatever your real server (domain) name is, e.g. for me it is `rfc5746.mywaifu.best`). Now put this config in `~/ech/conf/nginx/conf/nginx.conf` .
 
 ### Run nginx
 
 
 ```
-cd ~/code/openssl-for-nginx/esnistuff
-../../nginx/objs/nginx -c nginx-ech.conf
+cd ~/ech/conf
+
+# test configuration
+../nginx/objs/nginx -t
+
+# actuall start NGINX
+../nginx/objs/nginx
 ```
 
 ## Bonus: Multiple ECHConfigs with different SNIs
@@ -188,6 +193,17 @@ _4443._https.rfc5746.mywaifu.best
 
 Note: The new part is `_4443._https.`! This will tell browsers (or well, more generally ECH capable clients) the ECHConfig to use on this port.
 
+### Reload NGINX
+
+```
+cd ~/ech/conf
+
+# test configuration
+../nginx/objs/nginx -t
+
+# actuall start NGINX
+../nginx/objs/nginx -s reload
+```
 
 ## Reference
 
