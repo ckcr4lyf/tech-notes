@@ -51,47 +51,51 @@ Now nginx should be compiled with the ECH compatible OpenSSL!
 
 The binary should be at `~/ech/nginx/objs/nginx`
 
+## Configs & keys
+
 ### Config directory
 
-We'll now make a config directory for our ECH keys, TLS key & nginx configuration itself
+We'll now make a config directory for our ECH keys, TLS key & nginx configuration & data:
 
 ```
 cd ~/ech
 mkdir -p conf
 cd conf
-mkdir -p echkeydir
-mkdir -p tlskeydir
 mkdir -p nginx/www
 mkdir -p nginx/logs
+mkdir -p nginx/conf/echkeydir
+mkdir -p nginx/conf/tlskeydir
 ```
 
-### Some nginx dirs
+### Generate ECH keys
 
-We need to create some directories which nginx expects for logs and stuff.
+Next, we'll generate our keys for ECH, using the OpenSSL we compiled with ECH support. The public key is what will be used to encrypt the ClientHello.
+
+Choose any public_name you want apeparing in the OuterSNI (which passive eavesdroppers can see). For instance:
 
 ```
-cd ~/code/openssl-for-nginx/esnistuff
-mkdir nginx
-cd nginx
-mkdir logs
-mkdir www
-mkdir echkeydir
+ch ~/ech/conf/nginx/conf/echkeydir
+../../../../openssl/apps/openssl ech -public_name cia.gov -pemout cia.gov.pem.ech
 ```
+
+This file also contains the ECHCONFIG, which you'll need in the next step to setup DNS records.
+
+### Generate TLS keys
+
+These are the keys that will be actually used for the TLS connection with the Inner SNI (real hostname). You'd likely want them signed by a commonly trusted CA, such as Let's Encrypt. 
+
+Actually generating the TLS keys is out of scope, but a guide [can be found here](../nginx/signed.cert.md).
+
+The certificate and key should be placed in
+
+```
+~/ech/conf/nginx/conf/tlskeydir/domain.crt
+~/ech/conf/nginx/conf/tlskeydir/domain.key
+```
+
+accordingly.
 
 ## Deploying
-
-To deploy a website with ECH support behind nginx, we need to generate ECH keys, update our DNS, and then configure nginx to use ECH.
-
-The steps are outlined below:
-
-### Generate the ECH keys
-
-Put whatever `public_name` here you want snoopers to think you're connecting to (via SNI)!
-
-```
-cd ~/code/openssl-for-nginx/esnistuff
-../apps/openssl ech -public_name example.com -pemout ./nginx/echkeydir/example.pem.ech
-```
 
 ### Setup DNS records for ECHConfig
 
