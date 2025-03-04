@@ -2,11 +2,24 @@
 
 ECH is a good way to hide the SNI of the website being connected to.
 
-However, since ECH is not yet an official RFC (March 2024) and not many libs support it (especially on the server side), we need to do some hacky stuff to deploy it.
+However, since ECH is not yet an official RFC (Feb 2025) and not many libs support it (especially on the server side), we need to do some hacky stuff to deploy it.
 
 Specifically, we will use [openssl](https://github.com/sftcd/openssl/tree/ECH-draft-13c) & [nginx](https://github.com/sftcd/nginx/tree/ECH-experimental) forks by the great people at [defo.ie](https://defo.ie/) to deploy ECH support.
 
 ## Building
+
+### Environment
+
+Assuming a clean VPS. We're gonna do all our work in a `ech` directory in the home folder
+
+```
+sudo apt-get install libpcre3 libpcre3-dev
+```
+
+```
+cd ~
+mkdir -p ech
+```
 
 ### Building the OpenSSL fork
 
@@ -16,11 +29,10 @@ This fork adds support for ECH into openssl.
 cd ~
 mkdir -p code
 cd code
-git clone https://github.com/sftcd/openssl.git openssl-for-nginx
-cd openssl-for-nginx
-git checkout ECH-draft-13c
+git clone -b ECH-draft-13c --single-branch https://github.com/sftcd/openssl.git
+cd openssl
 ./config -d
-make
+make -j$(nproc)
 ```
 
 ### Building the nginx fork
@@ -29,42 +41,61 @@ This fork uses the forked OpenSSL along with Nginx to support incoming ECH TLS h
 
 ```
 cd ~/code
-git clone https://github.com/sftcd/nginx.git
+git clone -b ECH-experimental --single-branch https://github.com/sftcd/nginx.git
 cd nginx
-git checkout ECH-experimental
-./auto/configure --with-debug --prefix=nginx --with-http_ssl_module --with-openssl=$HOME/code/openssl-for-nginx  --with-openssl-opt="--debug"
-make
+./auto/configure --with-debug --prefix=nginx --with-http_ssl_module --with-openssl=$HOME/ech/openssl  --with-openssl-opt="--debug"
+make -j$(nproc)
 ```
 
 Now nginx should be compiled with the ECH compatible OpenSSL!
 
-### Some nginx dirs
+The binary should be at `~/ech/nginx/objs/nginx`
 
-We need to create some directories which nginx expects for logs and stuff.
+## Configs & keys
+
+### Config directory
+
+We'll now make a config directory for our ECH keys, TLS key & nginx configuration & data.
 
 ```
-cd ~/code/openssl-for-nginx/esnistuff
-mkdir nginx
-cd nginx
-mkdir logs
-mkdir www
-mkdir echkeydir
+cd ~/ech
+mkdir -p conf
+cd conf
+mkdir -p nginx/www
+mkdir -p nginx/logs
+mkdir -p nginx/conf/echkeydir
+mkdir -p nginx/conf/tlskeydir
 ```
+
+### Generate ECH keys
+
+Next, we'll generate our keys for ECH, using the OpenSSL we compiled with ECH support. The public key is what will be used to encrypt the ClientHello.
+
+Choose any public_name you want apeparing in the OuterSNI (which passive eavesdroppers can see). For instance:
+
+```
+ch ~/ech/conf/nginx/conf/echkeydir
+../../../../openssl/apps/openssl ech -public_name cia.gov -pemout cia.gov.pem.ech
+```
+
+This file also contains the ECHCONFIG, which you'll need in the next step to setup DNS records.
+
+### Generate TLS keys
+
+These are the keys that will be actually used for the TLS connection with the Inner SNI (real hostname). You'd likely want them signed by a commonly trusted CA, such as Let's Encrypt. 
+
+Actually generating the TLS keys is out of scope, but a guide [can be found here](../nginx/signed.cert.md).
+
+The certificate and key should be placed in
+
+```
+~/ech/conf/nginx/conf/tlskeydir/domain.crt
+~/ech/conf/nginx/conf/tlskeydir/domain.key
+```
+
+accordingly.
 
 ## Deploying
-
-To deploy a website with ECH support behind nginx, we need to generate ECH keys, update our DNS, and then configure nginx to use ECH.
-
-The steps are outlined below:
-
-### Generate the ECH keys
-
-Put whatever `public_name` here you want snoopers to think you're connecting to (via SNI)!
-
-```
-cd ~/code/openssl-for-nginx/esnistuff
-../apps/openssl ech -public_name example.com -pemout ./nginx/echkeydir/example.pem.ech
-```
 
 ### Setup DNS records for ECHConfig
 
@@ -103,9 +134,9 @@ http {
     access_log          logs/access.log combined;
     ssl_echkeydir        echkeydir;
     server {
-        listen              443 default_server ssl;
-        ssl_certificate     cadir/domain.crt;
-        ssl_certificate_key cadir/domain.key;
+        listen              4443 default_server ssl;
+        ssl_certificate     tlskeydir/domain.crt;
+        ssl_certificate_key tlskeydir/domain.key;
         ssl_protocols       TLSv1.3;
         server_name         rfc5746.mywaifu.best;
         location / {
@@ -116,14 +147,19 @@ http {
 }
 ```
 
-Replace `server_name` with whatever your real server (domain) name is, e.g. for me it is `rfc5746.mywaifu.best`). Now put this config in `~/code/openssl-for-nginx/esnistuff/nginx/nginx-ech.conf` .
+Replace `server_name` with whatever your real server (domain) name is, e.g. for me it is `rfc5746.mywaifu.best`). Now put this config in `~/ech/conf/nginx/conf/nginx.conf` .
 
 ### Run nginx
 
 
 ```
-cd ~/code/openssl-for-nginx/esnistuff
-../../nginx/objs/nginx -c nginx-ech.conf
+cd ~/ech/conf
+
+# test configuration
+../nginx/objs/nginx -t
+
+# actuall start NGINX
+../nginx/objs/nginx
 ```
 
 ## Bonus: Multiple ECHConfigs with different SNIs
@@ -157,6 +193,17 @@ _4443._https.rfc5746.mywaifu.best
 
 Note: The new part is `_4443._https.`! This will tell browsers (or well, more generally ECH capable clients) the ECHConfig to use on this port.
 
+### Reload NGINX
+
+```
+cd ~/ech/conf
+
+# test configuration
+../nginx/objs/nginx -t
+
+# actuall start NGINX
+../nginx/objs/nginx -s reload
+```
 
 ## Reference
 
