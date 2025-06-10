@@ -43,6 +43,8 @@
 - [Wireshark](./wireshark/index.md)
     - [Remote Wireshark](./wireshark/remote.md)
     - [TLS Inspection](./wireshark/tls.md)
+- [Sway](./sway/index.md)
+    - [Transparent Screenlock](./sway/transparent.md)
 
 # Audio/Video/Encoding
 
