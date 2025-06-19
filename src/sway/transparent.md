@@ -25,3 +25,11 @@ meson build/
 meson configure -Dwerror=false
 ninja -C build/
 ```
+
+For swaylock:
+
+```
+git clone https://github.com/swaywm/swaylock.git
+git checkout 1.5 (TBD?)
+meson build
+```
