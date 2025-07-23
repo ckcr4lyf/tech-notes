@@ -74,7 +74,7 @@ Next, we'll generate our keys for ECH, using the OpenSSL we compiled with ECH su
 Choose any public_name you want apeparing in the OuterSNI (which passive eavesdroppers can see). For instance:
 
 ```
-ch ~/ech/conf/nginx/conf/echkeydir
+cd ~/ech/conf/nginx/conf/echkeydir
 ../../../../openssl/apps/openssl ech -public_name cia.gov -pemout cia.gov.pem.ech
 ```
 
@@ -171,8 +171,8 @@ If you configure nginx to listen on multiple ports, you can advertise separate E
 Let's say, now instead of `example.com`, we want to use the SNI `cia.gov`. Let's first generate an ECHConfig for this domain:
 
 ```
-cd ~/code/openssl-for-nginx/esnistuff
-../apps/openssl ech -public_name cia.gov -pemout ./nginx/echkeydir/cia.gov.pem.ech
+cd ~/ech/conf/nginx/conf/echkeydir
+../../../../openssl/apps/openssl ech -public_name cia.gov -pemout cia.gov.pem.ech
 ```
 
 ### Tell NGINX to listen on this port
