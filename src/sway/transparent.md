@@ -33,3 +33,23 @@ git clone https://github.com/swaywm/swaylock.git
 git checkout 1.5 (TBD?)
 meson build
 ```
+
+### Swaylock comment
+There is a line which causes compilation warnings, here is a patch:
+
+```
+$ git diff
+diff --git a/main.c b/main.c
+index c65d68a..a5d2986 100644
+--- a/main.c
++++ b/main.c
+@@ -1057,7 +1057,7 @@ static int load_config(char *path, struct swaylock_state *state,
+                char *flag = malloc(nread + 3);
+                if (flag == NULL) {
+                        free(line);
+-                       free(config);
++                       // free(config);
+                        swaylock_log(LOG_ERROR, "Failed to allocate memory");
+                        return 0;
+                }
+```
