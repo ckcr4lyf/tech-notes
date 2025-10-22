@@ -1,0 +1,1037 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>tech-notes</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Running some services</li><li class="chapter-item expanded "><a href="services/bitcoin_core.html"><strong aria-hidden="true">1.</strong> Running bitcoin-core on a VPS</a></li><li class="chapter-item expanded "><a href="services/monero/monero_ubuntu.html"><strong aria-hidden="true">2.</strong> Running monero on a VPS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="services/monero/monero_wallet_tor.html"><strong aria-hidden="true">2.1.</strong> Connecting a monero wallet to a node over tor</a></li></ol></li><li class="chapter-item expanded "><a href="services/cftunnel.html"><strong aria-hidden="true">3.</strong> Exposting a local webservice over the internet via Cloudflare Tunnel</a></li><li class="chapter-item expanded "><a href="services/ntopng/ntopng.html"><strong aria-hidden="true">4.</strong> ntopng</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="services/ntopng/installation.html"><strong aria-hidden="true">4.1.</strong> Installation</a></li></ol></li><li class="chapter-item expanded "><a href="services/nginx/nginx.html"><strong aria-hidden="true">5.</strong> nginx</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="services/nginx/nginx-h3.html"><strong aria-hidden="true">5.1.</strong> Running HTTP/3 enabled nginx</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="services/nginx/nginx-h3-config.html"><strong aria-hidden="true">5.1.1.</strong> Setting up TLS and Config</a></li></ol></li><li class="chapter-item expanded "><a href="services/nginx/nginx-ech.html"><strong aria-hidden="true">5.2.</strong> Running ECH enabled nginx</a></li><li class="chapter-item expanded "><a href="services/nginx/signed.cert.html"><strong aria-hidden="true">5.3.</strong> CA Signed TLS certificates</a></li></ol></li><li class="chapter-item expanded "><a href="services/wireguard/index.html"><strong aria-hidden="true">6.</strong> Wireguard</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="services/wireguard/server.html"><strong aria-hidden="true">6.1.</strong> Server</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="services/wireguard/obfuscation.html"><strong aria-hidden="true">6.1.1.</strong> Obfuscation</a></li></ol></li><li class="chapter-item expanded "><a href="services/wireguard/client.html"><strong aria-hidden="true">6.2.</strong> Client</a></li></ol></li><li class="chapter-item expanded "><a href="services/email/index.html"><strong aria-hidden="true">7.</strong> Email</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="services/email/maintenance.html"><strong aria-hidden="true">7.1.</strong> Maintenance</a></li></ol></li><li class="chapter-item expanded "><a href="services/proxy/index.html"><strong aria-hidden="true">8.</strong> HTTP(S) Proxy</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="services/proxy/maintenance.html"><strong aria-hidden="true">8.1.</strong> Maintenance</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Installing stuff (OS specific)</li><li class="chapter-item expanded "><a href="tor_ubuntu.html"><strong aria-hidden="true">9.</strong> Installing tor on ubuntu</a></li><li class="chapter-item expanded "><a href="install/programming.html"><strong aria-hidden="true">10.</strong> Installing some programming languages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="install/node.html"><strong aria-hidden="true">10.1.</strong> Installing Node.JS</a></li><li class="chapter-item expanded "><a href="install/rust.html"><strong aria-hidden="true">10.2.</strong> Installing Rust</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Crypto</li><li class="chapter-item expanded "><a href="crypto/crypto.html"><strong aria-hidden="true">11.</strong> Crypto Stuff</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crypto/pgp.html"><strong aria-hidden="true">11.1.</strong> PGP</a></li><li class="chapter-item expanded "><a href="crypto/openssl/index.html"><strong aria-hidden="true">11.2.</strong> OpenSSL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crypto/openssl/tls.html"><strong aria-hidden="true">11.2.1.</strong> Generating TLS certificates</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">Miscellaneous Tips</li><li class="chapter-item expanded "><a href="wireshark/index.html"><strong aria-hidden="true">12.</strong> Wireshark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="wireshark/remote.html"><strong aria-hidden="true">12.1.</strong> Remote Wireshark</a></li><li class="chapter-item expanded "><a href="wireshark/tls.html"><strong aria-hidden="true">12.2.</strong> TLS Inspection</a></li></ol></li><li class="chapter-item expanded "><a href="sway/index.html"><strong aria-hidden="true">13.</strong> Sway</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="sway/transparent.html"><strong aria-hidden="true">13.1.</strong> Transparent Screenlock</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Audio/Video/Encoding</li><li class="chapter-item expanded "><a href="av1_encoding.html"><strong aria-hidden="true">14.</strong> AV1 encoding for BluRays</a></li><li class="chapter-item expanded "><a href="ogg_aac_ipod.html"><strong aria-hidden="true">15.</strong> Encoding ogg files for iPod</a></li><li class="chapter-item expanded "><a href="ffmpeg/index.html"><strong aria-hidden="true">16.</strong> Miscellaneous ffmpeg goodies</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ffmpeg/screen.html"><strong aria-hidden="true">16.1.</strong> Encoding Instant Replay to share online</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">tech-notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>This book covers some tech notes / guides / howtos etc. that sometimes I refer to.</p>
+<p>Also documenting here in public so I can easily share the reference with others (as opposed to e.g. a gist)</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="running-bitcoin-core-on-a-vps"><a class="header" href="#running-bitcoin-core-on-a-vps">Running bitcoin-core on a VPS</a></h1>
+<p>We will install and run bitcoin-core on a VPS to support the bitcoin network.</p>
+<p>Since a VPS would typically not have enough resources for the whole 300GB+ blockchain, we will use the pruned blockchain which is ~7GB.</p>
+<h2 id="downloading--installing"><a class="header" href="#downloading--installing">Downloading &amp; installing</a></h2>
+<p>Find the download link for the latest bitcoin-core from https://bitcoin.org/en/download</p>
+<p>Then, download it to a tmp directory, extract it, and install it:</p>
+<pre><code>cd /tmp
+wget https://bitcoin.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-linux-gnu.tar.gz
+tar xvf bitcoin-25.0-x86_64-linux-gnu.tar.gz
+sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-25.0/bin/*
+</code></pre>
+<h2 id="pruning"><a class="header" href="#pruning">Pruning</a></h2>
+<p>Before running the bitcoin daemon, setup the bitcoin config to prune the chain:</p>
+<pre><code>mkdir -p ~/.bitcoin
+echo &quot;prune=550&quot; &gt;&gt; ~/.bitcoin/bitcoin.conf
+</code></pre>
+<h2 id="running-the-node"><a class="header" href="#running-the-node">Running the node</a></h2>
+<p>For simplicity, in just a <code>screen</code>, you can run <code>bitcoind</code></p>
+<p>TODO: Service or something</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="running-a-monero-node-pruned-on-a-vps"><a class="header" href="#running-a-monero-node-pruned-on-a-vps">Running a monero node (pruned) on a VPS</a></h1>
+<p>Note: The pruned node still needs ~50GB!</p>
+<h2 id="downloading--installing-1"><a class="header" href="#downloading--installing-1">Downloading &amp; installing</a></h2>
+<p>Monero distributes a tard set of binaries directly, which we will save into <code>/opt</code>. </p>
+<p>In a root terminal:</p>
+<pre><code>mkdir -p /opt/monero
+chown -R ubuntu:ubuntu /opt/monero
+</code></pre>
+<p>Then as regular user:</p>
+<pre><code>cd /tmp
+wget https://downloads.getmonero.org/linux64
+tar -xjvf linux64 --strip-components=1 -C /opt/monero
+</code></pre>
+<h2 id="run-the-node-in-prune-mode"><a class="header" href="#run-the-node-in-prune-mode">Run the node in prune mode:</a></h2>
+<p>(<code>cd</code> into <code>/opt/monero</code> first...)</p>
+<pre><code>./monerod --prune-blockchain --detach
+</code></pre>
+<p>You can check progress by tailing the log:</p>
+<pre><code>tail -f ~/.bitmonero/bitmonero.log
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="connecting-a-monero-wallet-to-a-node-over-tor"><a class="header" href="#connecting-a-monero-wallet-to-a-node-over-tor">Connecting a monero wallet to a node over tor</a></h1>
+<p>This assumes you've tor already setup on your machine.</p>
+<p>To connect the wallet CLI to the monero network over tor, you can do:</p>
+<pre><code>./monero-wallet-cli --proxy 127.0.0.1:9050 --daemon-address lrtrju7tz72422sjmwakygfu7xgskaawiqmfulmssfzx7aofatfkmvid.onion:18089
+</code></pre>
+<p>Here <code>--proxy 127.0.0.1:9050</code> assumes tor is listening on the default port, and <code>--daemon-address</code> is the remote onion node.</p>
+<p>If you're not running your own node, you can find a list at <a href="https://monero.fail/?chain=monero&amp;network=mainnet&amp;onion=on&amp;all=true">monero.fail</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exposting-a-local-webservice-over-the-internet-via-cloudflare-tunnel"><a class="header" href="#exposting-a-local-webservice-over-the-internet-via-cloudflare-tunnel">Exposting a local webservice over the internet via Cloudflare Tunnel</a></h1>
+<p>Go to Cloudflare Dashboard -&gt; Zero Trust -&gt; Networks -&gt; Tunnels</p>
+<p>Create a tunnel via GUI, it will give command to run to install <code>cloudflared</code> and setup the tunnel on the host machine. This step can sometimes take 60-120 seconds! You'll get something like:</p>
+<pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 16.9M  100 16.9M    0     0  13.2M      0  0:00:01  0:00:01 --:--:-- 38.2M
+Selecting previously unselected package cloudflared.
+(Reading database ... 106916 files and directories currently installed.)
+Preparing to unpack cloudflared.deb ...
+Unpacking cloudflared (2024.2.0) ...
+Setting up cloudflared (2024.2.0) ...
+Processing triggers for man-db (2.10.2-1) ...
+2024-02-19T12:13:16Z INF Using Systemd
+2024-02-19T12:15:05Z INF Linux service for cloudflared installed successfully
+</code></pre>
+<p>Then, again in the Cloudflare Dashboard, just attach it to a subdomain and setup the local port, ezpz!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ntopng"><a class="header" href="#ntopng">ntopng</a></h1>
+<p><a href="https://www.ntop.org/products/traffic-analysis/ntop/">ntopng</a> is a pretty cool tool to view network traffic in real time.</p>
+<p>It also performs DPI to extract some metadata about connections you can observe, such as SNI (for TLS), or the infohash (for BitTorrent).</p>
+<p>It is especially interesting when run on a firewall / router of sorts.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>We will be using Ubuntu 22.04 LTS in this guide.</p>
+<h3 id="1-add-the-ntop-repository-into-ubuntu"><a class="header" href="#1-add-the-ntop-repository-into-ubuntu">1. Add the ntop repository into ubuntu</a></h3>
+<p>Inside a sudo shell:</p>
+<pre><code>apt-get install software-properties-common wget 
+add-apt-repository universe
+wget https://packages.ntop.org/apt-stable/22.04/all/apt-ntop-stable.deb 
+apt install ./apt-ntop-stable.deb 
+</code></pre>
+<h3 id="2-install-ntop"><a class="header" href="#2-install-ntop">2. Install ntop</a></h3>
+<pre><code>apt-get clean all 
+apt-get update 
+apt-get install ntopng
+</code></pre>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li>https://www.ntop.org/guides/ntopng/what_is_ntopng.html#installing-on-linux</li>
+<li>https://packages.ntop.org/apt-stable/</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="nginx"><a class="header" href="#nginx">nginx</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="running-http3-enabled-nginx"><a class="header" href="#running-http3-enabled-nginx">Running HTTP/3 enabled nginx</a></h1>
+<p>For simiplicity, everything here will assume its being done in a root shell.</p>
+<h2 id="building"><a class="header" href="#building">Building</a></h2>
+<h3 id="installing-dependencies"><a class="header" href="#installing-dependencies">Installing dependencies</a></h3>
+<pre><code>apt-get update
+apt-get install build-essential libpcre3 zlib1g libpcre3-dev 
+</code></pre>
+<h3 id="build-libressl"><a class="header" href="#build-libressl">Build LibreSSL</a></h3>
+<pre><code>cd /tmp
+wget https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.9.0.tar.gz
+tar xvzf libressl-3.9.0.tar.gz
+cd libressl-3.9.0
+./configure
+make check
+make install
+</code></pre>
+<h3 id="building-nginx"><a class="header" href="#building-nginx">Building nginx</a></h3>
+<pre><code>cd /tmp
+wget http://nginx.org/download/nginx-1.25.4.tar.gz
+tar xvzf nginx-1.25.4.tar.gz
+cd nginx-1.25.4
+./configure \
+    --with-debug \
+    --with-http_v3_module \
+    --with-cc-opt=&quot;-I../libressl/build/include&quot; \
+    --with-ld-opt=&quot;-L../libressl/build/lib&quot;
+make
+</code></pre>
+<h3 id="making-the-config-dirs"><a class="header" href="#making-the-config-dirs">Making the config dirs</a></h3>
+<pre><code>cd /usr/local
+mkdir nginx
+cd nginx
+mkdir logs
+mkdir conf
+</code></pre>
+<h2 id="references-1"><a class="header" href="#references-1">References</a></h2>
+<ul>
+<li>https://nginx.org/en/docs/quic.html</li>
+<li>https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/</li>
+<li>https://github.com/libressl/portable?tab=readme-ov-file#steps-that-apply-to-all-builds</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-tls-and-config"><a class="header" href="#setting-up-tls-and-config">Setting up TLS and Config</a></h1>
+<p>We will now generate our TLS keys and nginx config</p>
+<h2 id="generate-tls-key--cert"><a class="header" href="#generate-tls-key--cert">Generate TLS key &amp; cert</a></h2>
+<pre><code>cd /usr/local/nginx
+openssl req -newkey rsa:2048 -keyout domain.key -x509 -days 365 -out domain.crt
+</code></pre>
+<h2 id="setup-the-nginx-config"><a class="header" href="#setup-the-nginx-config">Setup the nginx config</a></h2>
+<p>Write this to <code>/usr/local/nginx/conf/nginx.conf</code></p>
+<pre><code>events{}
+
+http {
+    log_format quic '$remote_addr - $remote_user [$time_local] '
+                    '&quot;$request&quot; $status $body_bytes_sent '
+                    '&quot;$http_referer&quot; &quot;$http_user_agent&quot; &quot;$http3&quot;';
+
+    access_log logs/access.log quic;
+
+    server {
+        # for better compatibility it's recommended
+        # to use the same port for quic and https
+        listen 443 quic reuseport;
+        listen 443 ssl;
+
+        ssl_certificate     /usr/local/nginx/domain.crt;
+        ssl_certificate_key /usr/local/nginx/domain.key;
+
+        location / {
+            # required for browsers to direct them to quic port
+            add_header Alt-Svc 'h3=&quot;:443&quot;; ma=86400';
+        }
+    }
+}
+</code></pre>
+<h2 id="make-a-dummy-page"><a class="header" href="#make-a-dummy-page">Make a dummy page</a></h2>
+<pre><code>cd /var
+mkdir -p www
+cd www
+mkdir -p html
+cd html
+echo &quot;Hi&quot; &gt; index.html
+</code></pre>
+<h2 id="run-nginx"><a class="header" href="#run-nginx">Run nginx!</a></h2>
+<p>Now you can run nginx and serve your website over HTTP/3:</p>
+<pre><code>LD_LIBRARY_PATH=/usr/local/lib/ /tmp/nginx-1.25.4/objs/nginx
+</code></pre>
+<h2 id="todo"><a class="header" href="#todo">TODO</a></h2>
+<p>Make tutorial less hacky (LD library preload for LibreSSL, non standard nginx config dir etc.)</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="running-ech-enabled-nginx"><a class="header" href="#running-ech-enabled-nginx">Running ECH enabled nginx</a></h1>
+<p>ECH is a good way to hide the SNI of the website being connected to.</p>
+<p>However, since ECH is not yet an official RFC (Feb 2025) and not many libs support it (especially on the server side), we need to do some hacky stuff to deploy it.</p>
+<p>Specifically, we will use <a href="https://github.com/sftcd/openssl/tree/ECH-draft-13c">openssl</a> &amp; <a href="https://github.com/sftcd/nginx/tree/ECH-experimental">nginx</a> forks by the great people at <a href="https://defo.ie/">defo.ie</a> to deploy ECH support.</p>
+<h2 id="building-1"><a class="header" href="#building-1">Building</a></h2>
+<h3 id="environment"><a class="header" href="#environment">Environment</a></h3>
+<p>Assuming a clean VPS. We're gonna do all our work in a <code>ech</code> directory in the home folder</p>
+<pre><code>sudo apt-get install libpcre3 libpcre3-dev
+</code></pre>
+<pre><code>cd ~
+mkdir -p ech
+</code></pre>
+<h3 id="building-the-openssl-fork"><a class="header" href="#building-the-openssl-fork">Building the OpenSSL fork</a></h3>
+<p>This fork adds support for ECH into openssl.</p>
+<pre><code>cd ~
+mkdir -p code
+cd code
+git clone -b ECH-draft-13c --single-branch https://github.com/sftcd/openssl.git
+cd openssl
+./config -d
+make -j$(nproc)
+</code></pre>
+<h3 id="building-the-nginx-fork"><a class="header" href="#building-the-nginx-fork">Building the nginx fork</a></h3>
+<p>This fork uses the forked OpenSSL along with Nginx to support incoming ECH TLS handshakes.</p>
+<pre><code>cd ~/code
+git clone -b ECH-experimental --single-branch https://github.com/sftcd/nginx.git
+cd nginx
+./auto/configure --with-debug --prefix=nginx --with-http_ssl_module --with-openssl=$HOME/ech/openssl  --with-openssl-opt=&quot;--debug&quot;
+make -j$(nproc)
+</code></pre>
+<p>Now nginx should be compiled with the ECH compatible OpenSSL!</p>
+<p>The binary should be at <code>~/ech/nginx/objs/nginx</code></p>
+<h2 id="configs--keys"><a class="header" href="#configs--keys">Configs &amp; keys</a></h2>
+<h3 id="config-directory"><a class="header" href="#config-directory">Config directory</a></h3>
+<p>We'll now make a config directory for our ECH keys, TLS key &amp; nginx configuration &amp; data.</p>
+<pre><code>cd ~/ech
+mkdir -p conf
+cd conf
+mkdir -p nginx/www
+mkdir -p nginx/logs
+mkdir -p nginx/conf/echkeydir
+mkdir -p nginx/conf/tlskeydir
+</code></pre>
+<h3 id="generate-ech-keys"><a class="header" href="#generate-ech-keys">Generate ECH keys</a></h3>
+<p>Next, we'll generate our keys for ECH, using the OpenSSL we compiled with ECH support. The public key is what will be used to encrypt the ClientHello.</p>
+<p>Choose any public_name you want apeparing in the OuterSNI (which passive eavesdroppers can see). For instance:</p>
+<pre><code>cd ~/ech/conf/nginx/conf/echkeydir
+../../../../openssl/apps/openssl ech -public_name cia.gov -pemout cia.gov.pem.ech
+</code></pre>
+<p>This file also contains the ECHCONFIG, which you'll need in the next step to setup DNS records.</p>
+<h3 id="generate-tls-keys"><a class="header" href="#generate-tls-keys">Generate TLS keys</a></h3>
+<p>These are the keys that will be actually used for the TLS connection with the Inner SNI (real hostname). You'd likely want them signed by a commonly trusted CA, such as Let's Encrypt. </p>
+<p>Actually generating the TLS keys is out of scope, but a guide <a href="services/nginx/../nginx/signed.cert.html">can be found here</a>.</p>
+<p>The certificate and key should be placed in</p>
+<pre><code>~/ech/conf/nginx/conf/tlskeydir/domain.crt
+~/ech/conf/nginx/conf/tlskeydir/domain.key
+</code></pre>
+<p>accordingly.</p>
+<h2 id="deploying"><a class="header" href="#deploying">Deploying</a></h2>
+<h3 id="setup-dns-records-for-echconfig"><a class="header" href="#setup-dns-records-for-echconfig">Setup DNS records for ECHConfig</a></h3>
+<p>Once you generate the ECH keys, the contents will look something like this:</p>
+<pre><code>-----BEGIN PRIVATE KEY-----
+[REDACTED]
+-----END PRIVATE KEY-----
+-----BEGIN ECHCONFIG-----
+AD7+DQA6hAAgACAmYD8cK8laATn/iKI1jt79RGkFzoppTl0LVpshC/Q1VQAEAAEAAQALZXhhbXBsZS5jb20AAA==
+-----END ECHCONFIG-----
+</code></pre>
+<p>The base64 text is what you need to add to your domains &quot;HTTPS&quot; DNS record.</p>
+<p>For example, if your domain name (whatever value you used for <code>public_name</code> in the keygen step doesn't matter) is <code>rfc5746.mywaifu.best</code> , then you need to add a HTTPS record in your DNS, as such:</p>
+<p><img src="services/nginx/../../assets/ech_dns_https.png" alt="Cloudflare DNS example for ECH HTTPS" /></p>
+<p>Note: the value should be: <code>ech=&quot;THE BASE 64 ECHCONFIG&quot;</code></p>
+<h3 id="configure-nginx"><a class="header" href="#configure-nginx">Configure nginx</a></h3>
+<p>A sample configuration file could look like this: (<code>nginx-ech.conf</code>):</p>
+<pre><code>worker_processes  1;
+error_log  logs/error.log  info;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    access_log          logs/access.log combined;
+    ssl_echkeydir        echkeydir;
+    server {
+        listen              4443 default_server ssl;
+        ssl_certificate     tlskeydir/domain.crt;
+        ssl_certificate_key tlskeydir/domain.key;
+        ssl_protocols       TLSv1.3;
+        server_name         rfc5746.mywaifu.best;
+        location / {
+            root   www;
+            index  index.html index.htm;
+        }
+    }
+}
+</code></pre>
+<p>Replace <code>server_name</code> with whatever your real server (domain) name is, e.g. for me it is <code>rfc5746.mywaifu.best</code>). Now put this config in <code>~/ech/conf/nginx/conf/nginx.conf</code> .</p>
+<h3 id="run-nginx-1"><a class="header" href="#run-nginx-1">Run nginx</a></h3>
+<pre><code>cd ~/ech/conf
+
+# test configuration
+../nginx/objs/nginx -t
+
+# actuall start NGINX
+../nginx/objs/nginx
+</code></pre>
+<h2 id="bonus-multiple-echconfigs-with-different-snis"><a class="header" href="#bonus-multiple-echconfigs-with-different-snis">Bonus: Multiple ECHConfigs with different SNIs</a></h2>
+<p>If you configure nginx to listen on multiple ports, you can advertise separate ECHConfigs for each port, with their own SNI. Specifically, the ECHConfig advertised in the HTTPS RR follows &quot;Port Prefix Naming&quot; as per <a href="https://datatracker.ietf.org/doc/html/rfc9460#section-2.3-7">Section 2.3 of RFC9460</a>.</p>
+<h3 id="generating-a-new-echconfig"><a class="header" href="#generating-a-new-echconfig">Generating a new ECHConfig</a></h3>
+<p>Let's say, now instead of <code>example.com</code>, we want to use the SNI <code>cia.gov</code>. Let's first generate an ECHConfig for this domain:</p>
+<pre><code>cd ~/ech/conf/nginx/conf/echkeydir
+../../../../openssl/apps/openssl ech -public_name cia.gov -pemout cia.gov.pem.ech
+</code></pre>
+<h3 id="tell-nginx-to-listen-on-this-port"><a class="header" href="#tell-nginx-to-listen-on-this-port">Tell NGINX to listen on this port</a></h3>
+<p>If we want port 4443 to advertise this ECHConfig and be connectable, we just add a listen directive for this port in our NGINX config:</p>
+<pre><code>    listen 4443 default_server ssl;  
+</code></pre>
+<h3 id="advertise-the-echconfig"><a class="header" href="#advertise-the-echconfig">Advertise the ECHConfig</a></h3>
+<p>Finally, we need a new DNS HTTPS record for specifically for this port, based on &quot;Port Prefix Naming&quot;. So add a new HTTPS record for your domain, with the target as:</p>
+<pre><code>_4443._https.rfc5746.mywaifu.best  
+</code></pre>
+<p>Note: The new part is <code>_4443._https.</code>! This will tell browsers (or well, more generally ECH capable clients) the ECHConfig to use on this port.</p>
+<h3 id="reload-nginx"><a class="header" href="#reload-nginx">Reload NGINX</a></h3>
+<pre><code>cd ~/ech/conf
+
+# test configuration
+../nginx/objs/nginx -t
+
+# actuall start NGINX
+../nginx/objs/nginx -s reload
+</code></pre>
+<h2 id="reference"><a class="header" href="#reference">Reference</a></h2>
+<ul>
+<li>https://github.com/sftcd/openssl/blob/9e66beb759d274f3069e19cc96c793712e83122c/esnistuff/nginx.md?plain=1#L172</li>
+<li>https://github.com/sftcd/openssl/issues/26</li>
+<li>https://guardianproject.info/2023/11/10/quick-set-up-guide-for-encrypted-client-hello-ech/</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ca-signed-tls-certificates"><a class="header" href="#ca-signed-tls-certificates">CA Signed TLS certificates</a></h1>
+<p>Sometimes it can be useful to get TLS certificates signed by a CA. To do this for free, you need a domain name.</p>
+<p>Usually ACME clients like certbot will auto-detect a webserver and use that to &quot;serve&quot; the challenge.</p>
+<p>However this required pointing the domain to an IP address, which can be persisted in DNS history records. Another way to do it, from ANY machine, is via the DNS challenge.</p>
+<h2 id="acme-dns-challenge"><a class="header" href="#acme-dns-challenge">ACME DNS Challenge</a></h2>
+<p>We will use certbot for this. Assuming the domain you want a certificate for is <code>example.com</code>, then the following command will suffice:</p>
+<pre><code>certbot -d example.com --manual --preferred-challenges dns certonly
+</code></pre>
+<p>This will ask you to create a DNS TXT record with a certain value, to prove you control the domain name. Once that is done, you will have the signed certificate and private key on your machine, to do whatever you want with.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="wireguard"><a class="header" href="#wireguard">Wireguard</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="server"><a class="header" href="#server">Server</a></h1>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="obfuscation"><a class="header" href="#obfuscation">Obfuscation</a></h1>
+<p>Certain firewalls might try and block outbound wireguard connections to a server.</p>
+<p>Typically, wireguard as a protocol is quite easy to identify if some is implementing DPI (Deep Packet Inspection). This is harder to hide. However, if the firewall is somewhat naive, e.g. just looking for the default port or something, there are ways around this.</p>
+<h2 id="offering-wireguard-on-additional-ports"><a class="header" href="#offering-wireguard-on-additional-ports">Offering wireguard on additional ports</a></h2>
+<p>Some firewalls may block the known Wireguard port (51820). Even stricter firewalls may just block UDP traffic on all but very few ports.</p>
+<p>Typically, port 53 will not be blocked (DNS). Some other more common UDP ports include:</p>
+<ul>
+<li>123 (NTP - Network Time Protocol)</li>
+<li>443 (HTTPS over QUIC)</li>
+<li>1725 (Steam - Gaming software)</li>
+<li>27015 (Common Counter Strike server port)</li>
+</ul>
+<p>If any of these ports are free on your server, you can use IPtables to configure forwarding these ports to the wireguard port transparently, so clients can try connecting on these alternative ports if <code>51820</code> is blocked. </p>
+<p>No changes are needed on the server's wireguard config.</p>
+<p>The iptables rules look like:</p>
+<pre><code>iptables -A PREROUTING -d 1.2.3.4/32 -i ens3 -p udp -m multiport --dports 53,123,1725,27015 -j REDIRECT --to-ports 51820 -t nat
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>1.2.3.4</code> is the public IP of the server (that wireguard is listening on)</li>
+<li><code>ens3</code> is the corresponding </li>
+<li><code>53,123,1725,27015</code> is the list of UDP ports you want to use as backups for wireguard</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="client"><a class="header" href="#client">Client</a></h1>
+<h2 id="creating-a-client-config-for-routing-all-traffic-via-vpn"><a class="header" href="#creating-a-client-config-for-routing-all-traffic-via-vpn">Creating a client config for routing all traffic &quot;via VPN&quot;</a></h2>
+<p>In a temporary directory:</p>
+<pre><code>wg genkey | tee private.key
+cat private.key | wg pubkey | tee public.key
+</code></pre>
+<p>Then, make a config file e.g. <code>wireguard_config.conf</code> :</p>
+<pre><code>[Interface]
+PrivateKey = [private key just generated]
+Address = 10.10.0.3/24 (an IP on the subnet of the server's wireguard interface)
+
+[Peer]
+PublicKey = [server public key]
+AllowedIPs = 0.0.0.0/0 (all traffic to be routed through this tunnel)
+Endpoint = [server public IP address:port]
+</code></pre>
+<p>You then need to add the client as authorized to connect to the server. On the server, run:</p>
+<pre><code>wg set wg1 peer [public key just generated] allowed-ips 10.10.0.3
+</code></pre>
+<p>Replace <code>10.10.0.3</code> with whatever IP was chosen in the config file for the client above.</p>
+<p>To add the config to something like a smartphone, you can qrencode it via:</p>
+<pre><code>qrencode -t ansiutf8 &lt; wireguard_config.conf
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="email"><a class="header" href="#email">Email</a></h1>
+<p>Self-hosting E-Mail is a fun exercise, and not as daunting as people make it out to be. IP reputation is real, but if you plan to use it for personal use only, it is not too hard to get accepted.</p>
+<p>We will use a classic combo of Postfix + Dovecot. </p>
+<p>TODO: Explain the roles of postfix / dovecot.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="maintenance"><a class="header" href="#maintenance">Maintenance</a></h1>
+<h2 id="rotating-tls-certs"><a class="header" href="#rotating-tls-certs">Rotating TLS certs</a></h2>
+<p>TLS is used to protect communication on two fronts:</p>
+<ul>
+<li>Postfix (SMTP): via STARTTLS on port 587</li>
+<li>Dovecot (IMAP): via TLS on port 993</li>
+</ul>
+<p>We need to generare the certs for the domain on the MX record, e.g. <code>mail.saxrag.com</code> for me. These can be generated <a href="services/email//services/nginx/signed.cert.html">following the guide here</a>.</p>
+<p>Once rotated, postfix and dovecot need to be restarted. This can be done via:</p>
+<pre><code>postfix stop &amp;&amp; postfix start
+systemctl restart dovecot
+</code></pre>
+<p>You can use <code>openssl</code> to verify the new certs are being offered, e.g. for my domain:</p>
+<pre><code>openssl s_client -starttls smtp -connect mail.saxrag.com:587
+openssl s_client -connect mail.saxrag.com:993
+</code></pre>
+<h2 id="tls-configs"><a class="header" href="#tls-configs">TLS configs</a></h2>
+<p>YOu can find the location of the TLS certs/keys used by postfix/dovecot typically at:</p>
+<pre><code>/etc/postfix/main.cf
+/etc/dovecot/conf.d/10-ssl.conf
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="https-proxy"><a class="header" href="#https-proxy">HTTP(S) Proxy</a></h1>
+<p>Running an HTTP/S proxy is a useful way to try and achieve a couple of things:</p>
+<ul>
+<li>Hide the original IP address you're making the reqyest from (from the target website)</li>
+<li>Hide the intended website you're connecting to (from ISPs, censors) - only applicable to HTTPS proxies</li>
+</ul>
+<p>Note: HTTP(S) proxies work best for HTTP(S) requests, though by using <code>CONNECT</code> it is possible to relay arbitrary TCP traffic as well.</p>
+<p>However, proxies are typically configured at the application level. Even when you set an operating system level proxy (e.g. in Android), it is not necessary that an application respects it. <strong>If you need all your internet traffic routed securely, you should use a VPN.</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="maintenance-1"><a class="header" href="#maintenance-1">Maintenance</a></h1>
+<h2 id="rotating-tls-certs-1"><a class="header" href="#rotating-tls-certs-1">Rotating TLS certs</a></h2>
+<p>If you use stunnel to host an HTTPS proxy in addition to the HTTP proxy, then from tme to time you would need to rotate the TLS certs.</p>
+<p>Generating new certs can be done by <a href="services/proxy//services/nginx/signed.cert.html">following the guide here</a>.</p>
+<p>Once rotated, assuming the <code>stunnel.conf</code> points the the location of the new certs, it needs to be restarted</p>
+<pre><code>kill -9 $(pgrep stunnel)
+stunnel
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-tor-on-ubuntu"><a class="header" href="#installing-tor-on-ubuntu">Installing tor on ubuntu</a></h1>
+<h2 id="basic-steps"><a class="header" href="#basic-steps">Basic steps</a></h2>
+<p>All these should be done in a root terminal.</p>
+<h3 id="1-install-https-transport-for-apt"><a class="header" href="#1-install-https-transport-for-apt">1. Install https transport for apt</a></h3>
+<pre><code>apt install apt-transport-https
+</code></pre>
+<h3 id="2-add-the-tor-distribution-file-in-apt-sources-ie-etcaptsourceslistdtorlist"><a class="header" href="#2-add-the-tor-distribution-file-in-apt-sources-ie-etcaptsourceslistdtorlist">2. Add the tor distribution file in apt sources (i.e. <code>/etc/apt/sources.list.d/tor.list</code>)</a></h3>
+<p>First get your distribution name:</p>
+<pre><code>$ lsb_release -c
+Codename:	jammy
+</code></pre>
+<p>Use this in the file:</p>
+<pre><code>deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org jammy main
+deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org jammy main
+</code></pre>
+<h3 id="3-get-the-tor-gpg-key"><a class="header" href="#3-get-the-tor-gpg-key">3. Get the tor GPG key</a></h3>
+<pre><code>wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee /usr/share/keyrings/tor-archive-keyring.gpg &gt;/dev/null
+</code></pre>
+<h3 id="4-install-tor"><a class="header" href="#4-install-tor">4. Install tor!</a></h3>
+<pre><code>apt update
+apt install tor deb.torproject.org-keyring
+</code></pre>
+<h3 id="5-verification"><a class="header" href="#5-verification">5. Verification</a></h3>
+<pre><code>curl --proxy socks5h://localhost:9050 icanhazip.com
+</code></pre>
+<p>You can then put the IP into <a href="https://www.abuseipdb.com/check/">AbuseDB</a> or check on the <a href="https://metrics.torproject.org/rs.html">Tor Relay Metrics</a> page.</p>
+<p>You can also view the tor logs via:</p>
+<pre><code>journalctl -f -u tor
+</code></pre>
+<h2 id="references-2"><a class="header" href="#references-2">References</a></h2>
+<p>Mostly everything is from <a href="https://support.torproject.org/apt/tor-deb-repo/">the official tor docs</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-some-programming-languages"><a class="header" href="#installing-some-programming-languages">Installing some programming languages</a></h1>
+<p>Some tips on how to setup a VPS or similar with programming languages</p>
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
+<p>Usually a good idea to have <code>build-essential</code> &amp; <code>pkg-config</code>:</p>
+<pre><code class="language-sh">sudo apt-get install build-essential pkg-config
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-nodejs"><a class="header" href="#installing-nodejs">Installing Node.JS</a></h1>
+<p>Official website: <a href="https://nodejs.org/en/download/package-manager/current">https://nodejs.org/en/download/package-manager/current</a></p>
+<h2 id="quick-install-via-n"><a class="header" href="#quick-install-via-n">Quick install via n</a></h2>
+<p>Github Repo: <a href="https://github.com/tj/n">https://github.com/tj/n</a></p>
+<pre><code>curl -L https://bit.ly/n-install | bash
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-rust"><a class="header" href="#installing-rust">Installing Rust</a></h1>
+<p>Official website: <a href="https://www.rust-lang.org/tools/install">https://www.rust-lang.org/tools/install</a></p>
+<h2 id="quick-install-via-rustup"><a class="header" href="#quick-install-via-rustup">Quick install via Rustup</a></h2>
+<p>Website: <a href="https://rustup.rs/">https://rustup.rs/</a></p>
+<pre><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="crypto-stuff"><a class="header" href="#crypto-stuff">Crypto Stuff</a></h1>
+<p>Cryptographic references for PGP, GPG, OpenSSL etc.</p>
+<p>DISCLAIMER: This primarily aimed as a reference for myself. It may not be the most secure or best way to do this.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pgp"><a class="header" href="#pgp">PGP</a></h1>
+<p>PGP is great for signing and encryption. Signing is an especially valuable concept, since it has stronger guarantees on the author as opposed to any kind of e.g. social media profile, which by nature have backdoors accessible by staff.</p>
+<h2 id="keygen"><a class="header" href="#keygen">Keygen</a></h2>
+<p>We will use keys based on <a href="https://en.wikipedia.org/wiki/Curve25519">Curve25519</a>. For signing, this means <a href="https://en.wikipedia.org/wiki/EdDSA#Ed25519">Ed25519</a>, and for encryption <a href="https://x25519.xargs.org/">X25519</a>.</p>
+<p>We will first generate a master ceritification key. The password for this guy should be very strong. For the subsequent subkeys we will change the password later.</p>
+<pre><code>gpg --quick-generate-key 'Your Name &lt;email@domain.com&gt;' ed25519 cert never
+</code></pre>
+<p>You should get something like:</p>
+<pre><code>pub   ed25519 2024-03-25 [C]
+      224245002A2A0003CD7CF693FFC081E4E8D5FA41
+uid                      Your Name &lt;email@domain.com&gt;
+</code></pre>
+<p>The long hex string is the key fingerprint. We will save it in a temporary variable for generating the subkeys:</p>
+<pre><code>export KEYFP=224245002A2A0003CD7CF693FFC081E4E8D5FA41
+</code></pre>
+<p>Now we will generate the subkeys for signing and encryption. Here we will use a 3 year expiration, you can change it to something else if you'd like:</p>
+<pre><code>gpg --quick-add-key $KEYFP ed25519 sign 3y
+gpg --quick-add-key $KEYFP cv25519 encr 3y
+</code></pre>
+<p>Our keyring should now look like:</p>
+<pre><code>$ gpg -K --with-keygrip
+
+sec   ed25519 2024-03-25 [C]
+      224245002A2A0003CD7CF693FFC081E4E8D5FA41
+      Keygrip = FCC73C8DA31BEB61ECF3B2316131CBF9AFE02675
+uid           [ultimate] Your Name &lt;email@domain.com&gt;
+ssb   ed25519 2024-03-25 [S] [expires: 2027-03-25]
+      Keygrip = 5C407E3653C2BC7C1E4F06BB1179A9A317A88F52
+ssb   cv25519 2024-03-25 [E] [expires: 2027-03-25]
+      Keygrip = EBA000BD362AE3CFC512730544B133E7BBA7E217
+</code></pre>
+<p>Now that we generated the subkeys for signing and encryption, we can delete the master key. But we need to first save it, for when we need to generate new keys (e.g. after the current ones expire).</p>
+<p>Back up the master key via</p>
+<pre><code>$ gpg --armor --export-secret-keys $KEYFP &gt; gpg_master_key.asc
+</code></pre>
+<p>Now, we will delete the master key from our keyring. Go to your private key directory (usually <code>~/.gnupg</code>), and delete the file matching the keygrip of the <code>sec</code> key. In our case it is <code>FCC73C8DA31BEB61ECF3B2316131CBF9AFE02675.key</code>.</p>
+<p>Now when you view your keyring, GPG will print <code>sec#</code> indicating the secret key is not available:</p>
+<pre><code>sec#  ed25519 2024-03-25 [C]
+      224245002A2A0003CD7CF693FFC081E4E8D5FA41
+      Keygrip = FCC73C8DA31BEB61ECF3B2316131CBF9AFE02675
+uid           [ultimate] Your Name &lt;email@domain.com&gt;
+ssb   ed25519 2024-03-25 [S] [expires: 2027-03-25]
+      Keygrip = 5C407E3653C2BC7C1E4F06BB1179A9A317A88F52
+ssb   cv25519 2024-03-25 [E] [expires: 2027-03-25]
+      Keygrip = EBA000BD362AE3CFC512730544B133E7BBA7E217
+</code></pre>
+<p>Make sure to save <code>gpg_master_key.asc</code> somewhere encrypted for when you need it!</p>
+<h2 id="updating-the-password"><a class="header" href="#updating-the-password">Updating the password</a></h2>
+<p>Now with the master key deleted from your keyring, we can edit the password for the subkeys.</p>
+<p>Run <code>gpg -K --keyid-format 0xLONG</code> , and copy the KEYID of your master key. It would look something like:</p>
+<pre><code>sec#  ed25519/0xFFC081E4E8D5FA41 2024-03-25 [C]
+</code></pre>
+<p>Tell GPG you want to edit the key</p>
+<pre><code>gpg --edit-key 0xFFC081E4E8D5FA41
+</code></pre>
+<p>At the <code>gpg&gt; </code> prompt, type <code>passwd</code> . This will prompt you for the current password, which would be the strong password set when generating the master key.</p>
+<p>After entering that, it will ask you for a new password. Put in whatever you want.</p>
+<p>Finally, at the <code>gpg&gt; </code> prompt, type <code>quit</code> to finish.</p>
+<h2 id="references-3"><a class="header" href="#references-3">References</a></h2>
+<ul>
+<li>https://github.com/drduh/YubiKey-Guide</li>
+<li>https://musigma.blog/2021/05/09/gpg-ssh-ed25519.html</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="openssl"><a class="header" href="#openssl">OpenSSL</a></h1>
+<p>Some tips and tricks for using OpenSSL.</p>
+<p>For more indepth into some patterns of how e.g. ECDH, RSA work, my repo <a href="https://github.com/ckcr4lyf/cli-crypto">cli-crypto</a> may be more useful.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="generating-tls-certificates"><a class="header" href="#generating-tls-certificates">Generating TLS certificates</a></h1>
+<h2 id="rsa"><a class="header" href="#rsa">RSA</a></h2>
+<p>First, we generate and RSA key:</p>
+<pre><code>openssl genrsa -out example.com.key 4096
+</code></pre>
+<p>Generate the certificate signing request:</p>
+<pre><code>openssl req -key example.com.key -new -out example.com.csr
+</code></pre>
+<p>Self-signing the certificate:</p>
+<pre><code>openssl x509 -signkey example.com.key -in example.com.csr -req -days 3650 -out example.com.crt
+</code></pre>
+<h2 id="elliptic-curve"><a class="header" href="#elliptic-curve">Elliptic Curve</a></h2>
+<p>Basically the same, but we will generate an Ed25519 key instead</p>
+<pre><code>openssl genpkey -algorithm ed25519 -out example.com.key
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="wireshark"><a class="header" href="#wireshark">Wireshark</a></h1>
+<p>Wireshark is a great tool for inspecting network traffic, with support for a lot of filters and such.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="remote-wireshark"><a class="header" href="#remote-wireshark">Remote Wireshark</a></h1>
+<p>In many cases, it can be useful to view the traffic of a remote machine locally via Wireshark.</p>
+<p>Although tcpdump via SSH in the terminal is ok for some initial poking around, the convenicne of Wireshark w/ a GUI, deeper protocol analysis etc. is quite nifty.</p>
+<p>There are two ways to do so, depending on tools available. In both, the rudimentary filter <code>not tcp port 22</code> is used to not show SSH traffic, which otherwise would lead to a positive feedback loop.</p>
+<h2 id="using-dumpcap"><a class="header" href="#using-dumpcap">using dumpcap</a></h2>
+<p>If the remote machine has <code>dumpcap</code> installed, then it can be launched using via the SSH command with output redirected to <code>stdout</code>, which is then piped to Wireshark locally:</p>
+<pre><code>wireshark -k -i &lt;(ssh HOSTNAME &quot;dumpcap -P -w - -f 'not tcp port 22'&quot;)
+</code></pre>
+<h2 id="using-tcpdump"><a class="header" href="#using-tcpdump">using tcpdump</a></h2>
+<p>If the remote machine has <code>tcpdump</code> installed, then it can be launched via the following command:</p>
+<pre><code>wireshark -k -i &lt;(ssh HOSTNAME &quot;sudo tcpdump -w - -f 'not tcp port 22'&quot;)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tls-inspection"><a class="header" href="#tls-inspection">TLS Inspection</a></h1>
+<p>Most programs will use TLS to encrypt their HTTP requests to remote servers, so in Wireshark you'd be unable to view the actual data apart from some TLS metadata.</p>
+<p>If the application supports dumping TLS secrets via <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-keylogfile/">SSLKEYLOGFILE</a>, then you can instruct wireshark to use this file to decrypt the TLS communcation.</p>
+<h2 id="specifying-the-keylogfile-in-wireshark"><a class="header" href="#specifying-the-keylogfile-in-wireshark">Specifying the keylogfile in wireshark</a></h2>
+<p>Navigate to the TLS submenu via:</p>
+<ul>
+<li>Edit -&gt; Preferences -&gt; Protocols -&gt; TLS</li>
+</ul>
+<p>Then in the <code>(Pre)-Master-Secret log filename</code>, put the path to the keylogfile, e.g. <code>/tmp/sslkeylogfile.txt</code></p>
+<h2 id="inspecting-nodejs-traffic"><a class="header" href="#inspecting-nodejs-traffic">Inspecting Node.JS traffic</a></h2>
+<p>Node.JS supports dumping TLS secrets via the <a href="https://nodejs.org/docs/latest/api/cli.html#--tls-keylogfile"><code>--tls-keylog</code> parameter</a>.</p>
+<p>To set it as an environment variable, you can do:</p>
+<pre><code>export NODE_OPTIONS=&quot;--tls-keylog=/tmp/sslkeylogfile.txt&quot;
+</code></pre>
+<p>If a node application then makes a TLS connection using the native TLS libraries in Node.JS, it will log the secrets to the specified file to be inspected via Wireshark.</p>
+<h2 id="curl"><a class="header" href="#curl">cURL</a></h2>
+<p>cURL respects the <a href="https://everything.curl.dev/usingcurl/tls/sslkeylogfile.html"><code>SSLKEYLOGFILE</code> environment variable</a>.</p>
+<p>So you can just set it to something like</p>
+<pre><code>export SSLKEYLOGFILE=/tmp/sslkeylogfile.txt
+</code></pre>
+<p>and then run cURL commands.</p>
+<h2 id="inspecting-chromium"><a class="header" href="#inspecting-chromium">Inspecting Chromium</a></h2>
+<p>A good way to dump all TLS traffic from chromium, especially useful when trying to debug meta-requests (like DoH), or if there are devtools detectors, is the following:</p>
+<pre><code>chromium --ssl-key-log-file=/tmp/sslkeylogfile.txt --disable-http2 --disable-quic
+</code></pre>
+<p>Disabling HTTP/2 &amp; QUIC can make the requests a bit more readable in Wireshark</p>
+<h2 id="mitming-chromium"><a class="header" href="#mitming-chromium">MiTMing Chromium</a></h2>
+<p>In some cases it can be useful to MiTM Chromium instead to be able to change the req/res, especially to control some FE behavior (and when JS debugging is too tedious / unecessary).</p>
+<p>Launch <code>mitmproxy</code> , and then launc chromium via:</p>
+<pre><code>chromium --proxy-server=http://127.0.0.1:8080 --ignore-certificate-errors
+</code></pre>
+<p>Now in the <code>mitmweb</code> interface we can intercept and modify requests &amp; responses!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sway"><a class="header" href="#sway">Sway</a></h1>
+<p><a href="https://github.com/swaywm/sway">sway</a> is a tiling window manager for Wayland.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transparent-screenlock"><a class="header" href="#transparent-screenlock">Transparent Screenlock</a></h1>
+<p>Swaylock used to support alpha channels allowing for transparent screenlock, but unfortunately <a href="https://github.com/swaywm/swaylock/issues/278">they removed support for this</a>, since sway  (and wayland) planned to drop input-inhibitor.</p>
+<p>TODO: Confirm which version removed it</p>
+<p>WaylSwayand dropped it in <a href="https://github.com/swaywm/sway/releases/tag/1.10">1.10</a> as a result of wlroots dropping input-inhibitor in <a href="https://gitlab.freedesktop.org/wlroots/wlroots/-/tags/0.18.0">0.18.0</a>.</p>
+<p>However, if you compile swaylock, sway and wlroots in the version that have alpha &amp; input-inhibitor support, you can still use transparent lock.</p>
+<h2 id="compilation-instructions"><a class="header" href="#compilation-instructions">Compilation Instructions</a></h2>
+<p>For sway (and wlroots):</p>
+<pre><code>git clone https://github.com/swaywm/sway.git
+git checkout 1.9
+
+git clone https://gitlab.freedesktop.org/wlroots/wlroots.git subprojects/wlroots
+cd subprojects/wlroots
+git checkout 0.17.4
+
+cd ../../
+meson build/
+meson configure -Dwerror=false
+ninja -C build/
+</code></pre>
+<p>For swaylock:</p>
+<pre><code>git clone https://github.com/swaywm/swaylock.git
+git checkout 1.5 (TBD?)
+meson build
+</code></pre>
+<h3 id="swaylock-comment"><a class="header" href="#swaylock-comment">Swaylock comment</a></h3>
+<p>There is a line which causes compilation warnings, here is a patch:</p>
+<pre><code>$ git diff
+diff --git a/main.c b/main.c
+index c65d68a..a5d2986 100644
+--- a/main.c
++++ b/main.c
+@@ -1057,7 +1057,7 @@ static int load_config(char *path, struct swaylock_state *state,
+                char *flag = malloc(nread + 3);
+                if (flag == NULL) {
+                        free(line);
+-                       free(config);
++                       // free(config);
+                        swaylock_log(LOG_ERROR, &quot;Failed to allocate memory&quot;);
+                        return 0;
+                }
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="av1-encoding-for-blurays"><a class="header" href="#av1-encoding-for-blurays">AV1 encoding for BluRays</a></h1>
+<p>Assuming you've ffmpeg built with SVT-AV1 already. (TODO: Write a guide for this).</p>
+<p>These are my settings. They may not work for you, but generically they seem to get the job done for me.</p>
+<h2 id="figuring-out-the-crop"><a class="header" href="#figuring-out-the-crop">Figuring out the crop</a></h2>
+<p>This is especially important for movies, since often they have black bars on the top and bottom. Cropping them out will make encoding faster and waste less space.</p>
+<p>Note: Some movies have changing aspect ratios! For instance: The Dark Knight (2008). So be careful.</p>
+<p>Using ffmpeg, you can get the cropdetect as such:</p>
+<pre><code>ffmpeg -i Filename.mkv -vf cropdetect,metadata=mode=print -f null -
+</code></pre>
+<p>Which will print a lot of messages, looking like:</p>
+<pre><code>[Parsed_cropdetect_0 @ 0x69ed680] x1:0 x2:1919 y1:138 y2:941 w:1920 h:800 x:0 y:140 pts:76743 t:76.743000 limit:0.094118 crop=1920:800:0:140
+[Parsed_metadata_1 @ 0x69f3f80] frame:1840 pts:76743   pts_time:76.743
+[Parsed_metadata_1 @ 0x69f3f80] lavfi.cropdetect.x1=0
+[Parsed_metadata_1 @ 0x69f3f80] lavfi.cropdetect.x2=1919
+[Parsed_metadata_1 @ 0x69f3f80] lavfi.cropdetect.y1=138
+[Parsed_metadata_1 @ 0x69f3f80] lavfi.cropdetect.y2=941
+[Parsed_metadata_1 @ 0x69f3f80] lavfi.cropdetect.w=1920
+[Parsed_metadata_1 @ 0x69f3f80] lavfi.cropdetect.h=800
+[Parsed_metadata_1 @ 0x69f3f80] lavfi.cropdetect.x=0
+[Parsed_metadata_1 @ 0x69f3f80] lavfi.cropdetect.y=140
+[Parsed_metadata_1 @ 0x69f3f80] lavfi.cropdetect.limit=0.094118
+</code></pre>
+<p>Here, <code>crop=1920:800:0:140</code> is what you want.</p>
+<h2 id="encoding-the-video"><a class="header" href="#encoding-the-video">Encoding the video</a></h2>
+<p>Since I've built <code>ffav1</code> as ffmpeg with (and only with) SVT-AV1, I will encode the video independently from audio / subs etc.</p>
+<p>Add in the correct cropdetect, or leave it out if there's no cropping.</p>
+<pre><code>ffav1 -hide_banner -y -i Filename.mkv -vf crop=1920:800:0:140 -map 0:v:0 -c:v:0 libsvtav1 -preset 6 -svtav1-params tune=0:enable-overlays=1:scm=0 -pix_fmt yuv420p10le -g 120 -b:v:0 5000k -pass 1 -an -f null /dev/null &amp;&amp; \
+ffav1 -hide_banner -y -i Filename.mkv -vf crop=1920:800:0:140 -map 0:v:0 -c:v:0 libsvtav1 -preset 6 -svtav1-params tune=0:enable-overlays=1:scm=0 -pix_fmt yuv420p10le -g 120 -b:v:0 5000k -pass 2 -an Filename_AV1.mkv
+</code></pre>
+<h2 id="encoding-the-audio"><a class="header" href="#encoding-the-audio">Encoding the audio</a></h2>
+<p>First, determine the audio formats present on the source media, using something like <code>mediainfo filename.mkv</code> , which let's say, gives:</p>
+<pre><code>Audio #1
+ID                                       : 2
+Format                                   : MLP FBA 16-ch
+Format/Info                              : Meridian Lossless Packing FBA with 16-channel presentation
+Commercial name                          : Dolby TrueHD with Dolby Atmos
+Codec ID                                 : A_TRUEHD
+Duration                                 : 2 h 35 min
+Bit rate mode                            : Variable
+Bit rate                                 : 3 243 kb/s
+Maximum bit rate                         : 5 472 kb/s
+Channel(s)                               : 8 channels
+Channel layout                           : L R C LFE Ls Rs Lb Rb
+Sampling rate                            : 48.0 kHz
+Frame rate                               : 1 200.000 FPS (40 SPF)
+Compression mode                         : Lossless
+Stream size                              : 3.52 GiB (12%)
+Title                                    : Dolby TrueHD/Atmos Audio / 7.1 / 48 kHz / 3243 kbps / 24-bit
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+Number of dynamic objects                : 11
+Bed channel count                        : 1 channel
+Bed channel configuration                : LFE
+
+Audio #2
+ID                                       : 3
+Format                                   : AC-3
+Format/Info                              : Audio Coding 3
+Commercial name                          : Dolby Digital
+Format settings                          : Dolby Surround EX
+Codec ID                                 : A_AC3
+Duration                                 : 2 h 35 min
+Bit rate mode                            : Constant
+Bit rate                                 : 448 kb/s
+Channel(s)                               : 6 channels
+Channel layout                           : L R C LFE Ls Rs
+Sampling rate                            : 48.0 kHz
+Frame rate                               : 31.250 FPS (1536 SPF)
+Compression mode                         : Lossy
+Stream size                              : 498 MiB (2%)
+Title                                    : Compatibility Track / Dolby Digital EX Audio / 5.1-EX / 48 kHz / 448 kbps
+Language                                 : English
+Service kind                             : Complete Main
+Default                                  : No
+Forced                                   : No
+</code></pre>
+<h3 id="extracting-an-existing-audio-track"><a class="header" href="#extracting-an-existing-audio-track">Extracting an existing audio track</a></h3>
+<p>In this example, there is already a decent 5.1ch Doby Digital track (AC3) with a decent bitrate (448kb/s). So we can identify it with mkvmerge and then extract it:</p>
+<pre><code>$ mkvmerge -i Filename.mkv
+File 'Filename.mkv': container: Matroska
+Track ID 0: video (AVC/H.264/MPEG-4p10)
+Track ID 1: audio (TrueHD Atmos)
+Track ID 2: audio (AC-3 Dolby Surround EX)
+Track ID 3: subtitles (HDMV PGS)
+Track ID 4: subtitles (HDMV PGS)
+Track ID 5: subtitles (HDMV PGS)
+Track ID 6: subtitles (HDMV PGS)
+Track ID 7: subtitles (HDMV PGS)
+Track ID 8: subtitles (HDMV PGS)
+Track ID 9: subtitles (HDMV PGS)
+Track ID 10: subtitles (HDMV PGS)
+Track ID 11: subtitles (HDMV PGS)
+Track ID 12: subtitles (HDMV PGS)
+Track ID 13: subtitles (HDMV PGS)
+Chapters: 18 entries
+Global tags: 2 entries
+</code></pre>
+<p>And extract the track we want with</p>
+<pre><code>$ mkvextract Filename.mkv tracks 2:Filename_audio.ac3
+Extracting track 2 with the CodecID 'A_AC3' to the file 'Filename_audio.ac3'. Container format: Dolby Digital (AC-3)
+Progress: 100%
+</code></pre>
+<h3 id="encoding-an-existing-audio-track"><a class="header" href="#encoding-an-existing-audio-track">Encoding an existing audio track</a></h3>
+<p>If the only audio was some form of raw audio (e.g. Dolby TrueHD / DTS-HD), we can encode it to a compressed format (such as DD5.1) using:</p>
+<pre><code>ffmpeg -hide_banner Filename.mkv -map 0:a:0 -c:a:0 ac3 -b:a:0 640k Filename_audio.ac3
+</code></pre>
+<h2 id="extracting-the-chapters"><a class="header" href="#extracting-the-chapters">Extracting the chapters</a></h2>
+<p>If the original source had chapters, you can extract them to merge them into the final encode, via:</p>
+<pre><code>$ mkvextract Filename.mkv chapters Filename_Chapters.xml
+</code></pre>
+<h2 id="merging-the-files-together"><a class="header" href="#merging-the-files-together">Merging the files together</a></h2>
+<p>Once you have the video, audio, subtitles, you can merge them together using something like:</p>
+<pre><code>mkvmerge --title &quot;Movie Name (Year)&quot; \
+--track-name &quot;0:&quot; Filename_AV1.mkv \
+--track-name &quot;0:English (DD5.1)&quot; --language 0:eng Filename_audio.ac3 \
+--track-name &quot;0:English (SDH)&quot; --language 0:eng Subtitles.srt \
+-o Movie.Year.1080p.BluRay.DD5.1.AV1-GROUP.mkv
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="encoding-ogg-files-for-ipod"><a class="header" href="#encoding-ogg-files-for-ipod">Encoding ogg files for iPod</a></h1>
+<p>If you use <a href="https://github.com/oSumAtrIX/DownOnSpot">DownOnSpot</a> to download songs, they are encoded with Vorbis and in an OGG container.</p>
+<p>iTunes cannot import these (and the iPod can't play them back), so we need to convert them first.</p>
+<h2 id="conversion"><a class="header" href="#conversion">Conversion</a></h2>
+<p>tl;dr</p>
+<pre><code>ffmpeg -i song.ogg -map_metadata 0:s:a:0 -acodec aac -b:a 320k -aac_pns 0 -movflags +faststart -vn song.m4a
+</code></pre>
+<h3 id="explanation"><a class="header" href="#explanation">Explanation</a></h3>
+<p>We need to encode them with AAC, and store them in an M4A container, for iTunes / iPod to be able to play them back.</p>
+<p>The most vanilla way to do this is:</p>
+<pre><code>ffmpeg -i song.ogg -c:a aac song.m4a
+</code></pre>
+<p>However, this has a couple of problems:</p>
+<ul>
+<li>Won't get the metadata (e.g. song/album/artist title etc.)</li>
+<li>Regular weird high pitch noises when playing back on an iPod</li>
+</ul>
+<h3 id="metadata"><a class="header" href="#metadata">Metadata</a></h3>
+<p>The metadata in the downloaded OGG tracks is stored at the stream level:</p>
+<pre><code>$ ffprobe -hide_banner Angels.ogg
+Input #0, ogg, from 'Angels.ogg':
+  Duration: 00:04:25.00, start: 0.000000, bitrate: 328 kb/s
+  Stream #0:0: Audio: vorbis, 44100 Hz, stereo, fltp, 320 kb/s
+    Metadata:
+      title           : Angels
+      album           : Life Thru A Lens
+      artist          : Robbie Williams
+      album_artist    : Robbie Williams
+      track           : 4
+      disc            : 1
+      label           : Universal-Island Records Ltd.
+      date            : 1997-01-01
+</code></pre>
+<p>However, the AAC encoder in ffmpeg can only store the metadata at the top level (global metadata). <code>-map_metadata 0:s:a:0</code> will do this for us, so it is available to iTunes.</p>
+<h3 id="aac-perceptual-noise-substitution"><a class="header" href="#aac-perceptual-noise-substitution">AAC Perceptual Noise Substitution</a></h3>
+<p>Most iPods do not support the PNS feature in their AAC decoder, which ffmpeg by default uses. This results in tracks that sound fine on all devices except after syncing to the iPod!</p>
+<p>To fix this, we need <code>-aac_pns 0</code> .</p>
+<h2 id="references-4"><a class="header" href="#references-4">References</a></h2>
+<ul>
+<li>https://wiki.archlinux.org/title/IPod</li>
+<li>https://www.reddit.com/r/ipod/comments/r2cti3/squeaking_noises_only_through_the_ipod_and_only/hry0ys5/</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous-ffmpeg-goodies"><a class="header" href="#miscellaneous-ffmpeg-goodies">Miscellaneous ffmpeg goodies</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="encoding-instant-replay-to-share-online"><a class="header" href="#encoding-instant-replay-to-share-online">Encoding Instant Replay to share online</a></h1>
+<p>Nvidia has a feature called instant replay that saves <code>x</code> minutes of gameplay. This is saved at a fairly high bitrate. If you want to share a part of it with a friend online, then the file is way too big. Additionally, when sharing online, it is possible to get the context at a much lower resolution (e.g. 720p vs 1440p). Also when gaming on an ultrawide, if only the 16:9 part is relevant, then a crop also helps.</p>
+<h2 id="general-formula"><a class="header" href="#general-formula">General formula</a></h2>
+<p>Ignoring scaling down to 720p and cropping, there are two main codecs that should be used:</p>
+<ul>
+<li>H.264 + AAC, good combo for sharing on Whatsapp etc.</li>
+<li>VP9 + Opus, good combo for sharing on Discord etc.</li>
+</ul>
+<p>VP9 is more efficient and will give better results compared to H.264, but slightly less compatibility.</p>
+<h3 id="h264"><a class="header" href="#h264">H.264</a></h3>
+<p>The general recipe I like to use is:</p>
+<pre><code>ffmpeg -i source.mp4 -c:v libx264 -b:v 2000k -c:a aac -b:a 96k clip.mp4
+</code></pre>
+<h3 id="vp9"><a class="header" href="#vp9">VP9</a></h3>
+<p>The general recipe I like to use is:</p>
+<pre><code>ffmpeg -i source.mp4 -c:v libvpx-vp9 -b:v 2000k -c:a libopus -b:a 96k clip.webm
+</code></pre>
+<h2 id="additional-filters"><a class="header" href="#additional-filters">Additional filters</a></h2>
+<p>To crop from my 3440x1440 ultrawide down to 16:9 (useful when the overlay is ultrawide but actual content is 16:9), I use: <code>-vf crop=2560:1440:440:0</code></p>
+<p>To resize down to 720p, I use: <code>vf scale=1280:-1</code></p>
+<p>Usually I will combine the two, and encode at 1500kbps. If you need to seek to a particular start point, use the <code>-ss</code> flag. And if you only want the next <code>n</code> seconds, use the <code>-t</code> flag. This example starts from the 4 minute mark and takes the next 10 seconds:</p>
+<pre><code>ffmpeg -ss 00:04:00 -i &quot;source.mp4&quot;  -c:v libvpx-vp9 -b:v 1500k -vf &quot;crop=2560:1440:440:0,scale=1280:-1&quot; -preset veryslow -c:a libopus -b:a 96k -t 10 output.webm
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
