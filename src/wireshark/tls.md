@@ -45,3 +45,16 @@ chromium --ssl-key-log-file=/tmp/sslkeylogfile.txt --disable-http2 --disable-qui
 ```
 
 Disabling HTTP/2 & QUIC can make the requests a bit more readable in Wireshark
+
+
+## MiTMing Chromium
+
+In some cases it can be useful to MiTM Chromium instead to be able to change the req/res, especially to control some FE behavior (and when JS debugging is too tedious / unecessary).
+
+Launch `mitmproxy` , and then launc chromium via:
+
+```
+chromium --proxy-server=http://127.0.0.1:8080 --ignore-certificate-errors
+```
+
+Now in the `mitmweb` interface we can intercept and modify requests & responses!
