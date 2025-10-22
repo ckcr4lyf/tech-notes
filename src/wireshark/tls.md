@@ -35,3 +35,13 @@ export SSLKEYLOGFILE=/tmp/sslkeylogfile.txt
 ```
 
 and then run cURL commands.
+
+## Inspecting Chromium
+
+A good way to dump all TLS traffic from chromium, especially useful when trying to debug meta-requests (like DoH), or if there are devtools detectors, is the following:
+
+```
+chromium --ssl-key-log-file=/tmp/sslkeylogfile.txt --disable-http2 --disable-quic
+```
+
+Disabling HTTP/2 & QUIC can make the requests a bit more readable in Wireshark
